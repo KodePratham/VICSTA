@@ -164,6 +164,75 @@
     color: var(--retro-light-text);
     font-family: 'Tahoma', sans-serif;
   }
+  
+  .mobile-nav {
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    .mobile-nav {
+      display: block;
+    }
+    
+    .desktop-nav {
+      display: none;
+    }
+    
+    .retro-card {
+      margin-bottom: 10px;
+    }
+    
+    .retro-stats {
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px;
+    }
+    
+    .retro-stat {
+      padding: 8px;
+      border: 1px solid var(--retro-border);
+      border-radius: 4px;
+      background: var(--retro-bg);
+    }
+    
+    .retro-section-header {
+      padding: 6px 8px;
+      font-size: 11px;
+    }
+    
+    .retro-button, .retro-button-secondary {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    
+    .mobile-button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .mobile-button-group .retro-button,
+    .mobile-button-group .retro-button-secondary {
+      margin-bottom: 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .retro-header {
+      padding: 8px 0;
+    }
+    
+    .retro-card {
+      border-radius: 4px;
+      margin: 0 -4px 10px -4px;
+    }
+    
+    .retro-sidebar {
+      border-radius: 4px;
+      margin: 0 -4px 10px -4px;
+    }
+  }
 }
 
 html {

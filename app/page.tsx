@@ -5,17 +5,20 @@ export default function Home() {
       <header className="retro-header">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-4">
-              <h1 className="text-white text-xl font-bold">
+            <div className="flex items-center space-x-2 md:space-x-4">
+              <h1 className="text-white text-lg md:text-xl font-bold">
                 VICSTA
               </h1>
-              <span className="text-white text-sm opacity-80">Vishwakarma IOT Cybersecurity Tech Association</span>
+              <span className="text-white text-xs md:text-sm opacity-80 hidden sm:block">Vishwakarma IOT Cybersecurity Tech Association</span>
             </div>
-            <div className="flex items-center space-x-6">
+            <div className="desktop-nav flex items-center space-x-6">
               <a href="/about" className="text-white text-sm hover:underline">About</a>
               <a href="/achievements" className="text-white text-sm hover:underline">Achievements</a>
               <a href="#domains" className="text-white text-sm hover:underline">Domains</a>
               <a href="#contact" className="text-white text-sm hover:underline">Contact</a>
+            </div>
+            <div className="mobile-nav">
+              <button className="text-white text-sm">Menu</button>
             </div>
           </div>
         </div>
@@ -24,25 +27,22 @@ export default function Home() {
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 py-6">
         
-   
-
-        <div className="grid grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           
           {/* Main Content Area */}
-          <div className="col-span-8">
+          <div className="lg:col-span-8">
             {/* Welcome Card */}
             <div className="retro-card">
               <div className="retro-section-header">
                 Welcome to VICSTA Community
               </div>
-              <div className="p-6 text-center">
-        
-                <h2 className="text-lg font-bold mb-3">Connect. Learn. Innovate.</h2>
-                <p className="text-sm text-gray-600 mb-4 max-w-2xl mx-auto">
+              <div className="p-4 md:p-6 text-center">
+                <h2 className="text-base md:text-lg font-bold mb-3">Connect. Learn. Innovate.</h2>
+                <p className="text-xs md:text-sm text-gray-600 mb-4 max-w-2xl mx-auto">
                   Join our community of tech enthusiasts advancing in IoT, Cybersecurity, and Blockchain technologies. 
                   Connect with like-minded individuals and work on cutting-edge projects.
                 </p>
-                <div className="flex justify-center space-x-3">
+                <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-3">
                   <button className="retro-button">Join Community</button>
                   <a href="/about" className="retro-button-secondary">Learn More</a>
                 </div>
@@ -55,8 +55,8 @@ export default function Home() {
                 Stay Updated
               </div>
               <div className="p-4">
-                <p className="text-sm mb-4">Subscribe to receive updates about events, workshops, and tech insights:</p>
-                <div className="flex space-x-3">
+                <p className="text-xs md:text-sm mb-4">Subscribe to receive updates about events, workshops, and tech insights:</p>
+                <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
                   <input 
                     type="email" 
                     placeholder="Enter your email address"
@@ -76,39 +76,37 @@ export default function Home() {
                 
                 <div className="border-b border-gray-200 pb-4">
                   <div className="flex items-start space-x-3">
-                    <div className="w-10 h-10 bg-retro-blue retro-profile-pic flex items-center justify-center">
-                      <span className="text-white text-sm font-bold">🏆</span>
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-retro-blue retro-profile-pic flex items-center justify-center flex-shrink-0">
+                      <span className="text-white text-xs md:text-sm font-bold">🏆</span>
                     </div>
-                    <div className="flex-1">
-                      <h4 className="font-bold text-sm mb-1">APOGEE BITS Pilani, Pilani Campus</h4>
-                      <p className="text-xs text-gray-600 mb-2">Team Meraki Titans secured the Top 5 Position in the “Prototype Presentation Competition,
-                         BITS Pilani” where they showcased their AI + IoT Powered Healthcare System for Remote Villages</p>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-bold text-xs md:text-sm mb-1">APOGEE BITS Pilani, Pilani Campus</h4>
+                      <p className="text-xs text-gray-600 mb-2 leading-relaxed">Team Meraki Titans secured the Top 5 Position in the "Prototype Presentation Competition,
+                         BITS Pilani" where they showcased their AI + IoT Powered Healthcare System for Remote Villages</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="border-b border-gray-200 pb-4">
                   <div className="flex items-start space-x-3">
-                    <div className="w-10 h-10 bg-retro-blue retro-profile-pic flex items-center justify-center">
-                      <span className="text-white text-sm font-bold">📚</span>
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-retro-blue retro-profile-pic flex items-center justify-center flex-shrink-0">
+                      <span className="text-white text-xs md:text-sm font-bold">📚</span>
                     </div>
-                    <div className="flex-1">
-                      <h4 className="font-bold text-sm mb-1">International Research Internship - France</h4>
-                      <p className="text-xs text-gray-600 mb-2">Anish Nitin Takwale completed University Project Based Internship at Avignon University, France.
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-bold text-xs md:text-sm mb-1">International Research Internship - France</h4>
+                      <p className="text-xs text-gray-600 mb-2 leading-relaxed">Anish Nitin Takwale completed University Project Based Internship at Avignon University, France.
                          Research on "Analysis and Mitigation Of Black Hole Attack Using Honeypot in IoT Mechanism". 
                          Received Best Performance Certificate with 'A' Grade in oral defense. </p>
                     </div>
                   </div>
                 </div>
 
-            
-
               </div>
             </div>
           </div>
 
           {/* Sidebar */}
-          <div className="col-span-4">
+          <div className="lg:col-span-4 order-first lg:order-last">
             
             {/* Profile Info */}
             <div className="retro-sidebar">
@@ -117,7 +115,6 @@ export default function Home() {
               </div>
               <div className="p-4">
                 <div className="text-center mb-3">
-                
                   <div className="mt-2 text-sm font-bold">VICSTA</div>
                   <div className="text-xs text-gray-600">Tech Association</div>
                 </div>
@@ -177,12 +174,12 @@ export default function Home() {
 
         {/* Call to Action */}
         <div className="retro-card mt-6">
-          <div className="p-8 text-center">
-            <h2 className="text-xl font-bold mb-4">Ready to <span style={{color: 'var(--retro-blue)'}}>Join Us?</span></h2>
-            <p className="text-sm text-gray-600 mb-6">
+          <div className="p-4 md:p-8 text-center">
+            <h2 className="text-lg md:text-xl font-bold mb-4">Ready to <span style={{color: 'var(--retro-blue)'}}>Join Us?</span></h2>
+            <p className="text-xs md:text-sm text-gray-600 mb-6">
               Become part of our innovative community and advance your skills in cutting-edge technologies.
             </p>
-            <button className="retro-button text-base px-8 py-3">
+            <button className="retro-button text-sm md:text-base px-6 md:px-8 py-2 md:py-3">
               Join VICSTA Today
             </button>
           </div>
@@ -190,10 +187,10 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <footer id="contact" className="bg-white border-t border-gray-300 py-8 px-4 mt-8">
+      <footer id="contact" className="bg-white border-t border-gray-300 py-6 md:py-8 px-4 mt-8">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-4 gap-8 text-xs">
-            <div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 text-xs">
+            <div className="col-span-1 sm:col-span-2 lg:col-span-1">
               <h4 className="font-bold mb-3 text-retro-blue">VICSTA</h4>
               <p className="text-gray-600">Connecting minds, building futures in technology</p>
             </div>
@@ -217,7 +214,7 @@ export default function Home() {
             <div>
               <h5 className="font-bold mb-3">Connect</h5>
               <div className="space-y-1 text-gray-600">
-                <div>contact@vicsta.edu</div>
+                <div className="break-all">contact@vicsta.edu</div>
                 <div className="text-retro-blue">Follow us on social media</div>
               </div>
             </div>
@@ -230,3 +227,4 @@ export default function Home() {
     </div>
   )
 }
+   
