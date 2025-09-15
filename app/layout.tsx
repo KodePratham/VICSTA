@@ -1,15 +1,11 @@
 import './globals.css'
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
-const playfair = Playfair_Display({ 
-  subsets: ['latin'],
-  variable: '--font-playfair'
-})
 
 export const metadata = {
-  title: 'VICSTA - Computer Science Excellence',
-  description: 'Departmental club for Computer Science: IoT, Cybersecurity, and Blockchain',
+  title: 'Cyberpunk Club',
+  description: 'Welcome to our cyberpunk-themed club',
 }
 
 export default function RootLayout({
@@ -19,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${playfair.variable}`}>{children}</body>
+      <body className={inter.className}>{children}</body>
     </html>
   )
 }
