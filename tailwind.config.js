@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -7,10 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        'playfair': ['var(--font-playfair)', 'serif'],
-      },
+      fontFamily: {},
     },
   },
   plugins: [],
 }
+  

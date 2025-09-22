@@ -1,11 +1,13 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { Header } from '@/components/header'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Cyberpunk Club',
-  description: 'Welcome to our cyberpunk-themed club',
+  title: 'VICSTA | University Tech Club',
+  description:
+    'A university club for students passionate about Cyber Security, Internet of Things, and Blockchain.',
 }
 
 export default function RootLayout({
@@ -15,7 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} pt-16`}>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }
