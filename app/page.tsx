@@ -1,9 +1,13 @@
 import Image from 'next/image'
+import { SupabaseTest } from '@/components/supabase-test'
 
 export default function LandingPage() {
   return (
     <>
       <main className="flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-8 text-center">
+        <div className="absolute top-4 right-4">
+          <SupabaseTest />
+        </div>
         <h1 className="text-5xl md:text-8xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 to-neutral-500 py-2">
           Innovate. Secure. Connect.
         </h1>
