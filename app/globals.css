@@ -4,9 +4,25 @@
 
 @layer base {
   body {
-    @apply bg-[#f5f5f7] text-[#1d1d1f];
+    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;
   }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
   .container {
-    @apply max-w-6xl;
+    @apply max-w-7xl;
   }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400;
+  }
+}
+
+/* Prevent flash of unstyled content */
+html {
+  color-scheme: light dark;
 }
