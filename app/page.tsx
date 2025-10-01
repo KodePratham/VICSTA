@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { SupabaseTest } from '@/components/supabase-test'
 
 export default function LandingPage() {
@@ -10,6 +11,25 @@ export default function LandingPage() {
         </div>
 
         <div className="container mx-auto px-6 py-20 text-center">
+          {/* Logos Section */}
+          <div className="flex items-center justify-center gap-6 mb-8">
+            <Image
+              src="/VI_logo.png"
+              alt="Vishwakarma Institute of Technology Logo"
+              width={80}
+              height={80}
+              className="rounded-lg shadow-lg"
+            />
+            <div className="w-px h-16 bg-gray-300 dark:bg-gray-600"></div>
+            <Image
+              src="/VICSTA_logo.png"
+              alt="VICSTA Logo"
+              width={80}
+              height={80}
+              className="rounded-lg shadow-lg"
+            />
+          </div>
+
           <div className="mb-4 inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full">
             <p className="text-sm font-semibold text-blue-700 dark:text-blue-300">
               Vishwakarma Institute of Technology
@@ -122,9 +142,18 @@ export default function LandingPage() {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent mb-3">
-                VICSTA
-              </h3>
+              <div className="flex items-center gap-3 mb-3">
+                <Image
+                  src="/VI_logo.png"
+                  alt="VIT Logo"
+                  width={32}
+                  height={32}
+                  className="rounded"
+                />
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+                  VICSTA
+                </h3>
+              </div>
               <p className="text-gray-400 text-sm">
                 VIT Computer Science & Technology Association<br />
                 Vishwakarma Institute of Technology

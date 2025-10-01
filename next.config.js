@@ -3,6 +3,7 @@ const nextConfig = {
   images: {
     domains: [],
     unoptimized: false,
+    formats: ['image/webp', 'image/avif'],
   },
   env: {
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,

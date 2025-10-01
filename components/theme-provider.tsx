@@ -17,32 +17,41 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setMounted(true)
+    // Get initial theme from localStorage or system preference
     const savedTheme = localStorage.getItem('theme') as Theme
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
     
-    if (savedTheme) {
+    if (savedTheme && (savedTheme === 'dark' || savedTheme === 'light')) {
       setTheme(savedTheme)
     } else if (prefersDark) {
       setTheme('dark')
+    } else {
+      setTheme('light')
     }
   }, [])
 
   useEffect(() => {
     if (mounted) {
-      const root = window.document.documentElement
+      const root = document.documentElement
+      
+      // Remove existing theme classes
       root.classList.remove('light', 'dark')
+      
+      // Add new theme class
       root.classList.add(theme)
+      
+      // Save to localStorage
       localStorage.setItem('theme', theme)
     }
   }, [theme, mounted])
 
-  const value = {
-    theme,
-    setTheme,
+  const handleSetTheme = (newTheme: Theme) => {
+    setTheme(newTheme)
   }
 
-  if (!mounted) {
-    return <>{children}</>
+  const value = {
+    theme,
+    setTheme: handleSetTheme,
   }
 
   return (
@@ -55,7 +64,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext)
   if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider')
+    // Provide fallback values instead of throwing error
+    return {
+      theme: 'light' as Theme,
+      setTheme: () => {}
+    }
   }
   return context
 }
