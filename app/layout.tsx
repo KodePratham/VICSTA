@@ -1,14 +1,12 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
-import { Header } from '@/components/header'
-import { ThemeProvider } from '@/components/theme-provider'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'VICSTA - VIT Computer Science & Technology Association',
-  description: 'Departmental club of Vishwakarma Institute of Technology focusing on Cyber Security, Blockchain, and IoT',
+  title: 'Vicsta - VIT Computer Science & Technology Association',
+  description: 'Premier Computer Science club at Vishwakarma Institute of Technology focusing on Cyber Security, Blockchain, and IoT',
+  keywords: 'Vicsta, VIT, Computer Science, Cyber Security, Blockchain, IoT, Technology Club',
+  authors: [{ name: 'Vicsta Team' }],
+  viewport: 'width=device-width, initial-scale=1',
 }
 
 export default function RootLayout({
@@ -17,28 +15,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                const theme = localStorage.getItem('theme');
-                if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  document.documentElement.classList.add('dark');
-                } else {
-                  document.documentElement.classList.remove('dark');
-                }
-              } catch (e) {}
-            `,
-          }}
-        />
-      </head>
-      <body className={inter.className}>
-        <ThemeProvider>
-          <Header />
-          <div className="pt-16">{children}</div>
-        </ThemeProvider>
+    <html lang="en" className="scroll-smooth">
+      <body className="antialiased">
+        {children}
       </body>
     </html>
   )
