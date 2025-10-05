@@ -11,9 +11,18 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+        mono: ['Roboto Mono', 'monospace'],
       },
       colors: {
+        navy: '#0A192F',
+        'light-navy': '#112240',
+        'lightest-navy': '#233554',
+        green: '#64FFDA',
+        'light-green': '#64FFDA',
+        slate: '#8892B0',
+        'light-slate': '#CCD6F6',
+        'lightest-slate': '#FFFFFF',
         primary: {
           50: '#eff6ff',
           100: '#dbeafe',
@@ -26,6 +35,10 @@ module.exports = {
           800: '#1e40af',
           900: '#1e3a8a',
         },
+      },
+      animation: {
+        'gradient-shift': 'gradientShift 15s ease infinite',
+        'float': 'float 6s ease-in-out infinite',
       },
     },
   },
