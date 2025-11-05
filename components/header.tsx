@@ -19,9 +19,7 @@ export function Header() {
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
-    { name: 'Events', href: '#events' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Team', href: '#team' },
+    { name: 'HOD', href: '#hod' },
     { name: 'Contact', href: '#contact' },
   ]
 
@@ -29,9 +27,22 @@ export function Header() {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-navy/95 backdrop-blur-lg shadow-lg shadow-navy/50' : 'bg-transparent'}`}>
       <nav className="container">
         <div className="flex justify-between items-center py-6">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 border-2 border-green rounded flex items-center justify-center group-hover:bg-green/10 transition-colors">
-              <span className="text-green font-mono font-bold text-xl">V</span>
+          <Link href="/" className="flex items-center gap-4 group">
+            <div className="flex items-center gap-3">
+              <Image 
+                src="/VI_Logo.png" 
+                alt="VIT Logo" 
+                width={48} 
+                height={48}
+                className="object-contain"
+              />
+              <Image 
+                src="/VICSTA_logo.png" 
+                alt="VICSTA Logo" 
+                width={48} 
+                height={48}
+                className="object-contain"
+              />
             </div>
             <span className="text-light-slate font-poppins font-bold text-xl">Vicsta</span>
           </Link>
@@ -48,8 +59,11 @@ export function Header() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
-            <button className="btn-primary ml-6">
+            <button className="btn-primary ml-6 relative group" disabled>
               Join Us
+              <span className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-lightest-navy text-green text-xs rounded whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                Coming Soon
+              </span>
             </button>
           </div>
 
@@ -78,8 +92,11 @@ export function Header() {
                 <span className="text-green font-mono text-xs">0{index + 1}.</span> {item.name}
               </a>
             ))}
-            <button className="btn-primary w-full mt-6">
+            <button className="btn-primary w-full mt-6 relative group" disabled>
               Join Us
+              <span className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-lightest-navy text-green text-xs rounded whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                Coming Soon
+              </span>
             </button>
           </div>
         </div>

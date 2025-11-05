@@ -1,46 +1,46 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { supabase, isSupabaseConfigured } from '@/lib/supabase'
+import { testSupabaseConnection, isSupabaseConfigured } from '@/lib/supabase'
+
+interface ConnectionStatus {
+  connected: boolean | null
+  error: string | null
+  loading: boolean
+}
 
 export function SupabaseTest() {
-  const [connected, setConnected] = useState<boolean | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [status, setStatus] = useState<ConnectionStatus>({
+    connected: null,
+    error: null,
+    loading: true
+  })
 
   useEffect(() => {
-    const testConnection = async () => {
-      if (!isSupabaseConfigured || !supabase) {
-        setConnected(false)
-        setLoading(false)
+    const checkConnection = async () => {
+      setStatus(prev => ({ ...prev, loading: true }))
+
+      if (!isSupabaseConfigured) {
+        setStatus({
+          connected: false,
+          error: 'Environment variables not configured',
+          loading: false
+        })
         return
       }
 
-      try {
-        // Test with a simple query that should always work
-        const { data, error } = await supabase
-          .from('information_schema.tables')
-          .select('table_name')
-          .limit(1)
-        
-        if (error) {
-          // If information_schema doesn't work, try a simple RPC call
-          const { error: rpcError } = await supabase.rpc('version')
-          setConnected(!rpcError)
-        } else {
-          setConnected(true)
-        }
-      } catch (err) {
-        console.log('Supabase connection test:', err)
-        setConnected(false)
-      } finally {
-        setLoading(false)
-      }
+      const result = await testSupabaseConnection()
+      setStatus({
+        connected: result.connected,
+        error: result.error,
+        loading: false
+      })
     }
 
-    testConnection()
+    checkConnection()
   }, [])
 
-  if (loading) {
+  if (status.loading) {
     return (
       <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
         <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full animate-pulse"></div>
@@ -49,18 +49,28 @@ export function SupabaseTest() {
     )
   }
 
+  const isConnected = status.connected === true
+  const statusColor = isConnected ? 'green' : 'red'
+  const statusText = isConnected ? 'DB Connected' : 'DB Offline'
+
   return (
     <div className={`flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 rounded-lg shadow-sm border ${
-      connected ? 'border-green-200 dark:border-green-800' : 'border-red-200 dark:border-red-800'
+      isConnected ? 'border-green-200 dark:border-green-800' : 'border-red-200 dark:border-red-800'
     }`}>
-      <div className={`w-1.5 h-1.5 rounded-full ${
-        connected ? 'bg-green-500' : 'bg-red-500'
-      }`}></div>
-      <span className={`text-xs font-medium ${
-        connected ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'
-      }`}>
-        {connected ? 'DB Connected' : 'DB Offline'}
+      <div className={`w-1.5 h-1.5 rounded-full bg-${statusColor}-500`}></div>
+      <span className={`text-xs font-medium text-${statusColor}-700 dark:text-${statusColor}-400`}>
+        {statusText}
       </span>
+      {status.error && !isConnected && (
+        <div className="relative group">
+          <svg className="w-3 h-3 text-red-500 cursor-help" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <div className="absolute bottom-full right-0 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap max-w-xs">
+            {status.error}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
