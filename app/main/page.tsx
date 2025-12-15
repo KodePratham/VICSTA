@@ -55,6 +55,12 @@ export default function MainPage() {
   }
 
   const handleNavigate = (section: string) => {
+    if (section.startsWith('http')) {
+      playSound()
+      window.open(section, '_blank')
+      return
+    }
+
     if (isNavigating || navigatingTo) return
     
     setIsNavigating(true)
@@ -97,7 +103,8 @@ export default function MainPage() {
     { name: 'About', href: 'about', icon: '📖' },
     { name: 'Events', href: 'events', icon: '🎯' },
     { name: 'Faculty', href: 'hod', icon: '👨‍🏫' },
-    { name: 'Contact', href: 'contact', icon: '📧' }
+    { name: 'Contact', href: 'contact', icon: '📧' },
+    { name: 'Join Now!', href: 'https://docs.google.com/forms/d/e/1FAIpQLSeaTWd9pR6K0oa6PlnhYdUw-IZjnURJ06uGCmv-Uk-3FO5Beg/viewform?usp=header', icon: '🚀' }
   ]
 
   // Show loading state while determining initial section

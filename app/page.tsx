@@ -74,6 +74,12 @@ export default function LandingPage() {
   }
 
   const handleNavigate = (section: string) => {
+    if (section.startsWith('http')) {
+      playSound()
+      window.open(section, '_blank')
+      return
+    }
+
     if (navigatingTo) return
     
     setNavigatingTo(section)
@@ -90,7 +96,8 @@ export default function LandingPage() {
     { name: 'About', href: 'about', icon: '📖' },
     { name: 'Events', href: 'events', icon: '🎯' },
     { name: 'Faculty', href: 'hod', icon: '👨‍🏫' },
-    { name: 'Contact', href: 'contact', icon: '📧' }
+    { name: 'Contact', href: 'contact', icon: '📧' },
+    { name: 'Join Now!', href: 'https://docs.google.com/forms/d/e/1FAIpQLSeaTWd9pR6K0oa6PlnhYdUw-IZjnURJ06uGCmv-Uk-3FO5Beg/viewform?usp=header', icon: '🚀' }
   ]
 
   return (
@@ -193,9 +200,21 @@ export default function LandingPage() {
 
               {/* Press Start text */}
               {!isNavigating && (
-                <p className="text-center mt-8 text-blue-400/60 text-xs sm:text-sm pixel-text animate-blink">
-                  &gt; PRESS TO CONTINUE &lt;
-                </p>
+                <div className="flex flex-col items-center gap-6 mt-8">
+                  <p className="text-center text-blue-400/60 text-xs sm:text-sm pixel-text animate-blink">
+                    &gt; PRESS TO CONTINUE &lt;
+                  </p>
+                  
+                  <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSeaTWd9pR6K0oa6PlnhYdUw-IZjnURJ06uGCmv-Uk-3FO5Beg/viewform?usp=header"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={playSound}
+                    className="pixel-text text-xs sm:text-sm text-green hover:text-green/80 transition-colors border-b-2 border-green/50 hover:border-green pb-1 animate-pulse"
+                  >
+                    [ JOIN NOW! ]
+                  </a>
+                </div>
               )}
             </div>
 

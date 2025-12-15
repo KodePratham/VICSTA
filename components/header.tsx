@@ -59,12 +59,14 @@ export function Header() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
-            <button className="btn-primary ml-6 relative group" disabled>
+            <a 
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeaTWd9pR6K0oa6PlnhYdUw-IZjnURJ06uGCmv-Uk-3FO5Beg/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary ml-6 relative group inline-block"
+            >
               Join Us
-              <span className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-lightest-navy text-green text-xs rounded whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
-                Coming Soon
-              </span>
-            </button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -92,12 +94,14 @@ export function Header() {
                 <span className="text-green font-mono text-xs">0{index + 1}.</span> {item.name}
               </a>
             ))}
-            <button className="btn-primary w-full mt-6 relative group" disabled>
+            <a 
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeaTWd9pR6K0oa6PlnhYdUw-IZjnURJ06uGCmv-Uk-3FO5Beg/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary w-full mt-6 relative group block text-center"
+            >
               Join Us
-              <span className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-lightest-navy text-green text-xs rounded whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                Coming Soon
-              </span>
-            </button>
+            </a>
           </div>
         </div>
       </nav>
