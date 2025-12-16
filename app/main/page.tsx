@@ -183,12 +183,18 @@ export default function MainPage() {
 
             {/* Menu Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-8 max-w-4xl w-full">
-              {menuItems.map((item, index) => (
+              {menuItems.map((item, index) => {
+                const isJoin = item.name === 'Join Now!'
+                return (
                 <button
                   key={item.name}
                   onClick={() => handleNavigate(item.href)}
                   disabled={isNavigating}
-                  className={`menu-card group relative p-6 sm:p-8 bg-navy/80 border-4 border-blue-400 transition-all duration-300 transform ${
+                  className={`menu-card group relative p-6 sm:p-8 bg-navy/80 border-4 ${
+                    isJoin 
+                      ? 'border-green shadow-[0_0_20px_rgba(100,255,218,0.3)] hover:shadow-[0_0_40px_rgba(100,255,218,0.5)]' 
+                      : 'border-blue-400'
+                  } transition-all duration-300 transform ${
                     navigatingTo === item.href 
                       ? 'scale-95 opacity-50 cursor-not-allowed' 
                       : isNavigating 
@@ -198,10 +204,10 @@ export default function MainPage() {
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {/* Corner decorations */}
-                  <span className="absolute top-0 left-0 w-4 h-4 border-t-4 border-l-4 border-white"></span>
-                  <span className="absolute top-0 right-0 w-4 h-4 border-t-4 border-r-4 border-white"></span>
-                  <span className="absolute bottom-0 left-0 w-4 h-4 border-b-4 border-l-4 border-white"></span>
-                  <span className="absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 border-white"></span>
+                  <span className={`absolute top-0 left-0 w-4 h-4 border-t-4 border-l-4 ${isJoin ? 'border-green' : 'border-white'}`}></span>
+                  <span className={`absolute top-0 right-0 w-4 h-4 border-t-4 border-r-4 ${isJoin ? 'border-green' : 'border-white'}`}></span>
+                  <span className={`absolute bottom-0 left-0 w-4 h-4 border-b-4 border-l-4 ${isJoin ? 'border-green' : 'border-white'}`}></span>
+                  <span className={`absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 ${isJoin ? 'border-green' : 'border-white'}`}></span>
 
                   {/* Icon */}
                   <div className={`text-5xl sm:text-6xl mb-4 transition-transform duration-300 ${
@@ -211,31 +217,36 @@ export default function MainPage() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="pixel-text text-xl sm:text-2xl text-blue-400 mb-4">
+                  <h3 className={`pixel-text text-xl sm:text-2xl ${isJoin ? 'text-green' : 'text-blue-400'} mb-4`}>
                     {item.name}
                   </h3>
 
                   {/* Enter button */}
-                  <div className="inline-flex items-center gap-2 pixel-text text-sm text-white border-2 border-white px-4 py-2 group-hover:bg-white group-hover:text-navy transition-all duration-300">
+                  <div className={`inline-flex items-center gap-2 pixel-text text-sm ${
+                    isJoin 
+                      ? 'text-navy bg-green border-green group-hover:bg-transparent group-hover:text-green' 
+                      : 'text-white border-white group-hover:bg-white group-hover:text-navy'
+                  } border-2 px-4 py-2 transition-all duration-300`}>
                     {navigatingTo === item.href ? (
                       <>
-                        <span className="inline-block w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                        <span className={`inline-block w-3 h-3 border-2 ${isJoin ? 'border-navy' : 'border-white'} border-t-transparent rounded-full animate-spin`}></span>
                         <span>LOADING</span>
                       </>
                     ) : (
                       <>
                         <span>&gt;</span>
-                        <span>ENTER</span>
+                        <span>{isJoin ? 'REGISTER' : 'ENTER'}</span>
                       </>
                     )}
                   </div>
 
                   {/* Glow effect */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <div className="absolute inset-0 shadow-[0_0_30px_rgba(96,165,250,0.6)]"></div>
+                    <div className={`absolute inset-0 ${isJoin ? 'shadow-[0_0_30px_rgba(100,255,218,0.6)]' : 'shadow-[0_0_30px_rgba(96,165,250,0.6)]'}`}></div>
                   </div>
                 </button>
-              ))}
+                )
+              })}
             </div>
 
             {/* Bottom section with proper spacing */}

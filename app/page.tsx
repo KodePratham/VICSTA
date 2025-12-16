@@ -210,7 +210,7 @@ export default function LandingPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={playSound}
-                    className="pixel-text text-xs sm:text-sm text-green hover:text-green/80 transition-colors border-b-2 border-green/50 hover:border-green pb-1 animate-pulse"
+                    className="pixel-text text-sm sm:text-base bg-green text-navy px-8 py-4 border-4 border-green hover:bg-transparent hover:text-green transition-all duration-300 animate-pulse hover:animate-none transform hover:scale-105 shadow-[0_0_20px_rgba(100,255,218,0.4)] font-bold tracking-wider"
                   >
                     [ JOIN NOW! ]
                   </a>
