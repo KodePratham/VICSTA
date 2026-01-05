@@ -97,7 +97,6 @@ export default function LandingPage() {
     { name: 'Events', href: 'events', icon: '🎯' },
     { name: 'Faculty', href: 'hod', icon: '👨‍🏫' },
     { name: 'Contact', href: 'contact', icon: '📧' },
-    { name: 'Join Now!', href: 'https://docs.google.com/forms/d/e/1FAIpQLSeaTWd9pR6K0oa6PlnhYdUw-IZjnURJ06uGCmv-Uk-3FO5Beg/viewform?usp=header', icon: '🚀' }
   ]
 
   return (
@@ -204,16 +203,6 @@ export default function LandingPage() {
                   <p className="text-center text-blue-400/60 text-xs sm:text-sm pixel-text animate-blink">
                     &gt; PRESS TO CONTINUE &lt;
                   </p>
-                  
-                  <a
-                    href="https://docs.google.com/forms/d/e/1FAIpQLSeaTWd9pR6K0oa6PlnhYdUw-IZjnURJ06uGCmv-Uk-3FO5Beg/viewform?usp=header"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={playSound}
-                    className="pixel-text text-sm sm:text-base bg-green text-navy px-8 py-4 border-4 border-green hover:bg-transparent hover:text-green transition-all duration-300 animate-pulse hover:animate-none transform hover:scale-105 shadow-[0_0_20px_rgba(100,255,218,0.4)] font-bold tracking-wider"
-                  >
-                    [ JOIN NOW! ]
-                  </a>
                 </div>
               )}
             </div>

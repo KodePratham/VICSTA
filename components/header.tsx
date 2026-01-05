@@ -59,14 +59,6 @@ export function Header() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
-            <a 
-              href="https://docs.google.com/forms/d/e/1FAIpQLSeaTWd9pR6K0oa6PlnhYdUw-IZjnURJ06uGCmv-Uk-3FO5Beg/viewform?usp=header"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary ml-6 relative group inline-block"
-            >
-              Join Us
-            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -94,14 +86,6 @@ export function Header() {
                 <span className="text-green font-mono text-xs">0{index + 1}.</span> {item.name}
               </a>
             ))}
-            <a 
-              href="https://docs.google.com/forms/d/e/1FAIpQLSeaTWd9pR6K0oa6PlnhYdUw-IZjnURJ06uGCmv-Uk-3FO5Beg/viewform?usp=header"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary w-full mt-6 relative group block text-center"
-            >
-              Join Us
-            </a>
           </div>
         </div>
       </nav>
