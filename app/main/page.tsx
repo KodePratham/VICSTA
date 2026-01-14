@@ -10,6 +10,30 @@ export default function MainPage() {
   const [navigatingTo, setNavigatingTo] = useState<string | null>(null)
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const hasInitialized = useRef(false)
+  // EVENTS DATA + STATE
+const [currentEvent, setCurrentEvent] = useState(0)
+
+const events = [
+  {
+    title: 'VICSTA ORIENTATION 2025',
+    image: '/event1.jpeg',
+    points: [
+      'Welcoming first-year IoT students with energy, enthusiasm, and endless possibilities.',
+      'Organized by the VICSTA team with the presence of all IoT department faculty members.',
+      'An inspiring address by the respected HOD ma’am, motivating students toward innovation and excellence.'
+    ]
+  },
+  {
+    title: 'HARMONY & INNOVATION – ALUMNI INTERACTION',
+    image: '/event2.jpeg',
+    points: [
+      'First post-launch event of VICSTA conducted in collaboration with the IoT Forum.',
+      'Distinguished alumni Mr. Gokul B and Mr. Mrunal Hedau shared industry experience and career guidance.',
+      'An open and interactive discussion fostering harmony, innovation, and real-world understanding of IoT technologies.'
+    ]
+  }
+]
+
 
   useEffect(() => {
     // Prevent double execution in development
@@ -318,51 +342,107 @@ export default function MainPage() {
         )}
 
         {/* Events Section */}
-        {activeSection === 'events' && (
-          <div key="events-section" className="min-h-screen flex items-center justify-center px-4 py-20 animate-menu-appear">
-            <div className="max-w-4xl w-full bg-navy/80 border-4 border-blue-400 p-8 sm:p-12 relative">
-              {/* Corner decorations */}
-              <span className="absolute top-0 left-0 w-6 h-6 border-t-4 border-l-4 border-white"></span>
-              <span className="absolute top-0 right-0 w-6 h-6 border-t-4 border-r-4 border-white"></span>
-              <span className="absolute bottom-0 left-0 w-6 h-6 border-b-4 border-l-4 border-white"></span>
-              <span className="absolute bottom-0 right-0 w-6 h-6 border-b-4 border-r-4 border-white"></span>
+{activeSection === 'events' && (
+  <div
+    key="events-section"
+    className="min-h-screen flex items-center justify-center px-4 py-20 animate-menu-appear"
+  >
+    <div className="max-w-5xl w-full bg-navy/80 border-4 border-blue-400 p-8 sm:p-12 relative">
 
-              <h1 className="pixel-text text-3xl sm:text-4xl md:text-5xl text-blue-400 mb-8 text-center">
-                EVENTS
-              </h1>
-              <div className="h-1 w-48 mx-auto bg-blue-400 mb-12 animate-pulse-glow"></div>
+      {/* Corner decorations */}
+      <span className="absolute top-0 left-0 w-6 h-6 border-t-4 border-l-4 border-white"></span>
+      <span className="absolute top-0 right-0 w-6 h-6 border-t-4 border-r-4 border-white"></span>
+      <span className="absolute bottom-0 left-0 w-6 h-6 border-b-4 border-l-4 border-white"></span>
+      <span className="absolute bottom-0 right-0 w-6 h-6 border-b-4 border-r-4 border-white"></span>
 
-              <div className="text-center py-12">
-                <div className="text-6xl sm:text-8xl mb-8 animate-pulse">🚧</div>
-                <p className="pixel-text text-2xl sm:text-3xl text-blue-400 mb-4">
-                  COMING SOON
-                </p>
-                <p className="text-white font-poppins text-lg">
-                  Exciting events are being planned. Stay tuned!
-                </p>
-              </div>
+      {/* Heading */}
+      <h1 className="pixel-text text-3xl sm:text-4xl md:text-5xl text-blue-400 mb-8 text-center">
+        EVENTS
+      </h1>
+      <div className="h-1 w-48 mx-auto bg-blue-400 mb-12 animate-pulse-glow"></div>
 
-              <div className="mt-12 text-center">
-                <button 
-                  onClick={handleBackToMenu}
-                  disabled={isNavigating}
-                  className={`pixel-text text-sm text-blue-400 border-2 border-blue-400 px-6 py-3 transition-all duration-300 flex items-center gap-2 mx-auto ${
-                    isNavigating ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-400 hover:text-navy'
-                  }`}
-                >
-                  {isNavigating ? (
-                    <>
-                      <span className="inline-block w-3 h-3 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></span>
-                      <span>LOADING...</span>
-                    </>
-                  ) : (
-                    <span>&lt; BACK TO MENU</span>
-                  )}
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+      {/* Event Content */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+        {/* Event Image */}
+        <div className="border-4 border-blue-400 p-2">
+          <img
+            src={events[currentEvent].image}
+            alt={events[currentEvent].title}
+            className="w-full h-72 object-cover"
+          />
+        </div>
+
+        {/* Event Details */}
+        <div>
+          <h2 className="pixel-text text-2xl sm:text-3xl text-blue-400 mb-6">
+            {events[currentEvent].title}
+          </h2>
+
+          <ul className="space-y-4 text-white font-poppins text-base list-disc list-inside">
+            {events[currentEvent].points.map((point, index) => (
+              <li key={index}>{point}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Navigation Buttons */}
+      <div className="flex justify-between items-center mt-12">
+        <button
+          onClick={() =>
+            setCurrentEvent(
+              currentEvent === 0 ? events.length - 1 : currentEvent - 1
+            )
+          }
+          className="pixel-text text-sm text-blue-400 border-2 border-blue-400 px-6 py-3 hover:bg-blue-400 hover:text-navy transition-all"
+        >
+          &lt; PREVIOUS
+        </button>
+
+        <p className="pixel-text text-xs text-blue-400/60">
+          EVENT {currentEvent + 1} / {events.length}
+        </p>
+
+        <button
+          onClick={() =>
+            setCurrentEvent(
+              currentEvent === events.length - 1 ? 0 : currentEvent + 1
+            )
+          }
+          className="pixel-text text-sm text-blue-400 border-2 border-blue-400 px-6 py-3 hover:bg-blue-400 hover:text-navy transition-all"
+        >
+          NEXT &gt;
+        </button>
+      </div>
+
+      {/* Back to Menu */}
+      <div className="mt-14 text-center">
+        <button
+          onClick={handleBackToMenu}
+          disabled={isNavigating}
+          className={`pixel-text text-sm text-blue-400 border-2 border-blue-400 px-6 py-3 transition-all duration-300 flex items-center gap-2 mx-auto ${
+            isNavigating
+              ? 'opacity-50 cursor-not-allowed'
+              : 'hover:bg-blue-400 hover:text-navy'
+          }`}
+        >
+          {isNavigating ? (
+            <>
+              <span className="inline-block w-3 h-3 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></span>
+              <span>LOADING...</span>
+            </>
+          ) : (
+            <span>&lt; BACK TO MENU</span>
+          )}
+        </button>
+      </div>
+
+    </div>
+  </div>
+)}
+
+
 
         {/* Faculty Section - Professional Style */}
         {activeSection === 'hod' && (
