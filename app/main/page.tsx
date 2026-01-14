@@ -1,3 +1,4 @@
+// Updated on 2026-01-14
 'use client'
 
 import Image from 'next/image'

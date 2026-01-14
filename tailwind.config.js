@@ -1,3 +1,4 @@
+// Updated on 2026-01-14
 const plugin = require('tailwindcss/plugin')
 
 /** @type {import('tailwindcss').Config} */

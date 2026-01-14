@@ -1,3 +1,4 @@
+// Updated on 2026-01-14
 import type { Metadata } from 'next'
 import './globals.css'
 
