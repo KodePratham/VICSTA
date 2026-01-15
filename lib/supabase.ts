@@ -30,7 +30,7 @@ export const testSupabaseConnection = async () => {
 
   try {
     // Test connection with a simple query
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('pg_tables')
       .select('tablename')
       .limit(1)

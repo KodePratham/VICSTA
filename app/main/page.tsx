@@ -309,7 +309,7 @@ const events = [
 
               <div className="space-y-6 text-white text-base sm:text-lg leading-relaxed">
                 <p className="font-poppins">
-                  Vicsta is the flagship technology club of Vishwakarma Institute of Technology's 
+                  Vicsta is the flagship technology club of Vishwakarma Institute of Technology&apos;s 
                   Computer Science department. We are a community of passionate innovators, 
                   researchers, and tech enthusiasts.
                 </p>
@@ -366,9 +366,11 @@ const events = [
 
         {/* Event Image */}
         <div className="border-4 border-blue-400 p-2">
-          <img
+          <Image
             src={events[currentEvent].image}
             alt={events[currentEvent].title}
+            width={500}
+            height={288}
             className="w-full h-72 object-cover"
           />
         </div>
@@ -494,15 +496,15 @@ const events = [
                         <li className="flex gap-3 group">
                           <span className="text-blue-600 font-bold text-sm flex-shrink-0 mt-1">01.</span>
                           <span className="text-sm sm:text-base leading-relaxed">
-                            Best Paper Award in "International Conference on future Intelligence in Science and Technology, 
-                            SITS, Pune-SITSFIST-20"
+                            Best Paper Award in &quot;International Conference on future Intelligence in Science and Technology, 
+                            SITS, Pune-SITSFIST-20&quot;
                           </span>
                         </li>
                         <li className="flex gap-3 group">
                           <span className="text-blue-600 font-bold text-sm flex-shrink-0 mt-1">02.</span>
                           <span className="text-sm sm:text-base leading-relaxed">
-                            Best Paper Award in "International Virtual Conference on Recent Trends in Engineering & 
-                            Technology - Vishwacon2020, VIIT, Pune 28 Nov 20"
+                            Best Paper Award in &quot;International Virtual Conference on Recent Trends in Engineering &amp; 
+                            Technology - Vishwacon2020, VIIT, Pune 28 Nov 20&quot;
                           </span>
                         </li>
                       </ul>
