@@ -31,6 +31,24 @@ const events = [
       'Distinguished alumni Mr. Gokul B and Mr. Mrunal Hedau shared industry experience and career guidance.',
       'An open and interactive discussion fostering harmony, innovation, and real-world understanding of IoT technologies.'
     ]
+  },
+  {
+    title: 'FIELD TRIP TO GMRT - GIANT METREWAVE RADIO TELESCOPE',
+    image: '/event3.jpg',
+    points: [
+      'An educational field trip to the Giant Metrewave Radio Telescope (GMRT), exploring one of the world\'s largest radio telescope arrays.',
+      'Students gained hands-on insights into radio astronomy, signal processing, and the advanced technology powering GMRT.',
+      'A successful and enriching experience, fostering curiosity and scientific temperament among future engineers.'
+    ]
+  },
+  {
+    title: 'FIELD TRIP TO IITM - INDIAN INSTITUTE OF TROPICAL METEOROLOGY',
+    image: '/event4.jpg',
+    points: [
+      'An insightful visit to the Indian Institute of Tropical Meteorology (IITM), a premier research institute in atmospheric sciences.',
+      'Students explored advanced meteorological instruments and learned about weather forecasting and climate change research.',
+      'A great opportunity to interact with scientists and understand the impact of technology on meteorology.'
+    ]
   }
 ]
 
@@ -371,6 +389,7 @@ const events = [
             alt={events[currentEvent].title}
             width={500}
             height={288}
+            priority={true}
             className="w-full h-72 object-cover"
           />
         </div>
