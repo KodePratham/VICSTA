@@ -198,6 +198,34 @@ export default function LandingPage() {
                 <span className="absolute inset-0 border-2 border-blue-400 animate-border-pulse-blue"></span>
               </button>
 
+              {/* Spacer between buttons */}
+              <div className="mt-6"></div>
+
+              <button
+                onClick={() => {
+                  playSound()
+                  window.location.href = '/hackarena'
+                }}
+                className="game-button-blue group relative px-8 sm:px-12 py-4 sm:py-6 text-sm sm:text-base md:text-lg font-bold transition-all duration-300 hover:scale-105"
+              >
+                {/* Button decorative corners */}
+                <span className="absolute top-0 left-0 w-3 h-3 sm:w-4 sm:h-4 border-t-2 sm:border-t-4 border-l-2 sm:border-l-4 border-blue-400"></span>
+                <span className="absolute top-0 right-0 w-3 h-3 sm:w-4 sm:h-4 border-t-2 sm:border-t-4 border-r-2 sm:border-r-4 border-blue-400"></span>
+                <span className="absolute bottom-0 left-0 w-3 h-3 sm:w-4 sm:h-4 border-b-2 sm:border-b-4 border-l-2 sm:border-l-4 border-blue-400"></span>
+                <span className="absolute bottom-0 right-0 w-3 h-3 sm:w-4 sm:h-4 border-b-2 sm:border-b-4 border-r-2 sm:border-r-4 border-blue-400"></span>
+                
+                {/* Button text */}
+                <span className="relative pixel-text text-blue-400 group-hover:text-navy transition-colors duration-300 flex items-center gap-3">
+                  🏆 HACKARENA&apos;26
+                </span>
+                
+                {/* Hover background */}
+                <span className="absolute inset-0 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left -z-10"></span>
+                
+                {/* Animated border */}
+                <span className="absolute inset-0 border-2 border-blue-400 animate-border-pulse-blue"></span>
+              </button>
+
               {/* Press Start text */}
               {!isNavigating && (
                 <div className="flex flex-col items-center gap-6 mt-8">
