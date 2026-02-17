@@ -688,7 +688,7 @@ export default function HackArenaPage() {
                     { label: 'Professionalism', text: 'Participants are expected to maintain professional conduct throughout the event.' },
                   ],
                 },
-              ].map((section, sIndex) => {
+              ].map((section) => {
                 const sc = colors(section.color)
                 return (
                   <div
