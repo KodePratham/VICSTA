@@ -1,7 +1,7 @@
 // HACKARENA'26 - VICSTA Hackathon
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 
 interface ProblemStatement {
@@ -413,124 +413,119 @@ export default function HackArenaPage() {
               const c = colors(domain.color)
               const isSelected = selectedDomain === index
               return (
-                <button
-                  key={domain.code}
-                  onClick={() => handleDomainSelect(index)}
-                  className={`menu-card group relative p-6 bg-navy/80 border-4 transition-all duration-300 transform text-left ${c.border
-                    } ${isSelected
-                      ? `scale-[1.02] ${c.glow}`
-                      : 'hover:scale-105 hover:-translate-y-2'
-                    }`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  {/* Corner decorations */}
-                  <span className="absolute top-0 left-0 w-4 h-4 border-t-4 border-l-4 border-white"></span>
-                  <span className="absolute top-0 right-0 w-4 h-4 border-t-4 border-r-4 border-white"></span>
-                  <span className="absolute bottom-0 left-0 w-4 h-4 border-b-4 border-l-4 border-white"></span>
-                  <span className="absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 border-white"></span>
-
-                  {/* Icon + Code */}
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-4xl">{domain.icon}</span>
-                    <span className={`pixel-text text-[10px] ${c.text} opacity-70`}>
-                      [{domain.code}]
-                    </span>
-                  </div>
-
-                  {/* Name */}
-                  <h3 className={`pixel-text text-sm sm:text-base ${c.text} mb-2`}>
-                    {domain.name}
-                  </h3>
-
-                  {/* Problem count */}
-                  <p className="font-mono text-xs text-white/50">
-                    {domain.problems.length} PROBLEM STATEMENTS
-                  </p>
-
-                  {/* Select indicator */}
-                  <div
-                    className={`mt-4 inline-flex items-center gap-2 pixel-text text-[10px] border-2 px-3 py-1.5 transition-all duration-300 ${isSelected
-                      ? `${c.border} ${c.bg} text-navy font-bold`
-                      : `border-white/50 text-white/50 group-hover:border-white group-hover:text-white`
+                <React.Fragment key={domain.code}>
+                  <button
+                    onClick={() => handleDomainSelect(index)}
+                    className={`menu-card group relative p-6 bg-navy/80 border-4 transition-all duration-300 transform text-left ${c.border
+                      } ${isSelected
+                        ? `scale-[1.02] ${c.glow}`
+                        : 'hover:scale-105 hover:-translate-y-2'
                       }`}
+                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    {isSelected ? '▼ SELECTED' : '▶ SELECT'}
-                  </div>
+                    {/* Corner decorations */}
+                    <span className="absolute top-0 left-0 w-4 h-4 border-t-4 border-l-4 border-white"></span>
+                    <span className="absolute top-0 right-0 w-4 h-4 border-t-4 border-r-4 border-white"></span>
+                    <span className="absolute bottom-0 left-0 w-4 h-4 border-b-4 border-l-4 border-white"></span>
+                    <span className="absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 border-white"></span>
 
-                  {/* Glow effect on hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <div className={`absolute inset-0 ${c.glow}`}></div>
-                  </div>
-                </button>
+                    {/* Icon + Code */}
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-4xl">{domain.icon}</span>
+                      <span className={`pixel-text text-[10px] ${c.text} opacity-70`}>
+                        [{domain.code}]
+                      </span>
+                    </div>
+
+                    {/* Name */}
+                    <h3 className={`pixel-text text-sm sm:text-base ${c.text} mb-2`}>
+                      {domain.name}
+                    </h3>
+
+                    {/* Problem count */}
+                    <p className="font-mono text-xs text-white/50">
+                      {domain.problems.length} PROBLEM STATEMENTS
+                    </p>
+
+                    {/* Select indicator */}
+                    <div
+                      className={`mt-4 inline-flex items-center gap-2 pixel-text text-[10px] border-2 px-3 py-1.5 transition-all duration-300 ${isSelected
+                        ? `${c.border} ${c.bg} text-navy font-bold`
+                        : `border-white/50 text-white/50 group-hover:border-white group-hover:text-white`
+                        }`}
+                    >
+                      {isSelected ? '▼ SELECTED' : '▶ SELECT'}
+                    </div>
+
+                    {/* Glow effect on hover */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                      <div className={`absolute inset-0 ${c.glow}`}></div>
+                    </div>
+                  </button>
+
+                  {/* Problem Statements Panel – spans full grid width, shown right after this card */}
+                  {isSelected && (
+                    <div className="col-span-1 sm:col-span-2 lg:col-span-3 animate-menu-appear">
+                      <div className={`border-4 ${c.border} bg-navy/90 p-6 sm:p-8`}>
+                        {/* Domain Header */}
+                        <div className="flex items-center gap-4 mb-8">
+                          <span className="text-5xl">{domain.icon}</span>
+                          <div>
+                            <h2 className={`pixel-text text-lg sm:text-xl ${c.text} mb-1`}>
+                              {domain.name}
+                            </h2>
+                            <p className={`pixel-text text-[10px] ${c.text} opacity-60`}>
+                              DOMAIN: {domain.code} &bull; {domain.problems.length} CHALLENGES
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className={`h-0.5 w-full ${c.bg} opacity-30 mb-8`}></div>
+
+                        {/* Problem Cards */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          {domain.problems.map((problem, pIndex) => (
+                            <div
+                              key={problem.id}
+                              className={`group relative bg-navy/60 border-2 ${c.border} border-opacity-40 p-5 transition-all duration-300 hover:border-opacity-100 hover:${c.glow}`}
+                              style={{ animationDelay: `${pIndex * 0.05}s` }}
+                            >
+                              {/* Problem ID badge */}
+                              <div className="flex items-center justify-between mb-3">
+                                <span
+                                  className={`pixel-text text-[10px] ${c.bg} text-navy px-2 py-1 font-bold`}
+                                >
+                                  {problem.id}
+                                </span>
+                              </div>
+
+                              {/* Problem Title */}
+                              <h4 className={`pixel-text text-xs sm:text-sm ${c.text} mb-3`}>
+                                {problem.title}
+                              </h4>
+
+                              {/* Problem Description */}
+                              <p className="font-mono text-xs text-white/60 leading-relaxed">
+                                {problem.description}
+                              </p>
+
+                              {/* Corner accents */}
+                              <span
+                                className={`absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 ${c.border}`}
+                              ></span>
+                              <span
+                                className={`absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 ${c.border}`}
+                              ></span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </React.Fragment>
               )
             })}
           </div>
-
-          {/* Problem Statements Panel */}
-          {selectedDomain !== null && (
-            <div className="animate-menu-appear mb-16">
-              {(() => {
-                const domain = domains[selectedDomain]
-                const c = colors(domain.color)
-                return (
-                  <div className={`border-4 ${c.border} bg-navy/90 p-6 sm:p-8`}>
-                    {/* Domain Header */}
-                    <div className="flex items-center gap-4 mb-8">
-                      <span className="text-5xl">{domain.icon}</span>
-                      <div>
-                        <h2 className={`pixel-text text-lg sm:text-xl ${c.text} mb-1`}>
-                          {domain.name}
-                        </h2>
-                        <p className={`pixel-text text-[10px] ${c.text} opacity-60`}>
-                          DOMAIN: {domain.code} &bull; {domain.problems.length} CHALLENGES
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className={`h-0.5 w-full ${c.bg} opacity-30 mb-8`}></div>
-
-                    {/* Problem Cards */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {domain.problems.map((problem, pIndex) => (
-                        <div
-                          key={problem.id}
-                          className={`group relative bg-navy/60 border-2 ${c.border} border-opacity-40 p-5 transition-all duration-300 hover:border-opacity-100 hover:${c.glow}`}
-                          style={{ animationDelay: `${pIndex * 0.05}s` }}
-                        >
-                          {/* Problem ID badge */}
-                          <div className="flex items-center justify-between mb-3">
-                            <span
-                              className={`pixel-text text-[10px] ${c.bg} text-navy px-2 py-1 font-bold`}
-                            >
-                              {problem.id}
-                            </span>
-                          </div>
-
-                          {/* Problem Title */}
-                          <h4 className={`pixel-text text-xs sm:text-sm ${c.text} mb-3`}>
-                            {problem.title}
-                          </h4>
-
-                          {/* Problem Description */}
-                          <p className="font-mono text-xs text-white/60 leading-relaxed">
-                            {problem.description}
-                          </p>
-
-                          {/* Corner accents */}
-                          <span
-                            className={`absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 ${c.border}`}
-                          ></span>
-                          <span
-                            className={`absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 ${c.border}`}
-                          ></span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )
-              })()}
-            </div>
-          )}
 
           {/* ═══════════ REGISTER BUTTON ═══════════ */}
           <div className="flex justify-center my-12">
