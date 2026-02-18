@@ -384,6 +384,39 @@ html {
   }
 }
 
+/* Announcement card glow */
+@keyframes announcement-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.2), 0 0 30px rgba(100, 255, 218, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(100, 255, 218, 0.4), 0 0 50px rgba(100, 255, 218, 0.2);
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+.announcement-card {
+  animation: announcement-glow 3s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.announcement-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.06), transparent);
+  animation: shimmer-sweep 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
 /* Radial gradient utility */
 .bg-gradient-radial {
   background: radial-gradient(circle, var(--tw-gradient-stops));
