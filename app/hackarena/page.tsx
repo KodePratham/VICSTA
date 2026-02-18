@@ -336,9 +336,8 @@ export default function HackArenaPage() {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div
-            className={`text-center mb-12 transition-all duration-1000 ${
-              showContent ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
-            }`}
+            className={`text-center mb-12 transition-all duration-1000 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
+              }`}
           >
             <h1 className="pixel-game-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-blue-400 mb-4 animate-glitch-text leading-tight">
               HACKARENA&apos;26
@@ -354,9 +353,8 @@ export default function HackArenaPage() {
 
           {/* Back Button */}
           <div
-            className={`flex justify-center mb-10 transition-all duration-700 delay-200 ${
-              showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
+            className={`flex justify-center mb-10 transition-all duration-700 delay-200 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
           >
             <button
               onClick={() => {
@@ -375,9 +373,8 @@ export default function HackArenaPage() {
 
           {/* Domain Cards Grid */}
           <div
-            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 transition-all duration-700 delay-300 ${
-              showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
+            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 transition-all duration-700 delay-300 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
           >
             {domains.map((domain, index) => {
               const c = colors(domain.color)
@@ -386,13 +383,11 @@ export default function HackArenaPage() {
                 <button
                   key={domain.code}
                   onClick={() => handleDomainSelect(index)}
-                  className={`menu-card group relative p-6 bg-navy/80 border-4 transition-all duration-300 transform text-left ${
-                    c.border
-                  } ${
-                    isSelected
+                  className={`menu-card group relative p-6 bg-navy/80 border-4 transition-all duration-300 transform text-left ${c.border
+                    } ${isSelected
                       ? `scale-[1.02] ${c.glow}`
                       : 'hover:scale-105 hover:-translate-y-2'
-                  }`}
+                    }`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {/* Corner decorations */}
@@ -421,11 +416,10 @@ export default function HackArenaPage() {
 
                   {/* Select indicator */}
                   <div
-                    className={`mt-4 inline-flex items-center gap-2 pixel-text text-[10px] border-2 px-3 py-1.5 transition-all duration-300 ${
-                      isSelected
+                    className={`mt-4 inline-flex items-center gap-2 pixel-text text-[10px] border-2 px-3 py-1.5 transition-all duration-300 ${isSelected
                         ? `${c.border} ${c.bg} text-navy font-bold`
                         : `border-white/50 text-white/50 group-hover:border-white group-hover:text-white`
-                    }`}
+                      }`}
                   >
                     {isSelected ? '▼ SELECTED' : '▶ SELECT'}
                   </div>
@@ -563,11 +557,10 @@ export default function HackArenaPage() {
                   {/* Node */}
                   <div className="relative z-10 flex-shrink-0">
                     <div
-                      className={`w-12 h-12 sm:w-16 sm:h-16 border-2 flex items-center justify-center transition-all duration-300 ${
-                        item.isLive
+                      className={`w-12 h-12 sm:w-16 sm:h-16 border-2 flex items-center justify-center transition-all duration-300 ${item.isLive
                           ? 'border-green bg-green/20 shadow-[0_0_20px_rgba(100,255,218,0.5)] animate-pulse'
                           : 'border-blue-400 bg-navy/80 group-hover:shadow-[0_0_20px_rgba(96,165,250,0.4)]'
-                      }`}
+                        }`}
                     >
                       <span className="pixel-text text-[8px] sm:text-[10px] text-blue-400">
                         {String(i + 1).padStart(2, '0')}
@@ -577,20 +570,18 @@ export default function HackArenaPage() {
 
                   {/* Content */}
                   <div
-                    className={`flex-1 border-2 p-4 sm:p-5 transition-all duration-300 ${
-                      item.isLive
+                    className={`flex-1 border-2 p-4 sm:p-5 transition-all duration-300 ${item.isLive
                         ? 'border-green bg-green/5 shadow-[0_0_15px_rgba(100,255,218,0.2)]'
                         : 'border-blue-400/40 bg-navy/60 group-hover:border-blue-400/80'
-                    }`}
+                      }`}
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                       <div>
                         <span
-                          className={`pixel-text text-[9px] px-2 py-0.5 mb-2 inline-block ${
-                            item.isLive
+                          className={`pixel-text text-[9px] px-2 py-0.5 mb-2 inline-block ${item.isLive
                               ? 'bg-green text-navy font-bold'
                               : 'bg-blue-400/20 text-blue-400'
-                          }`}
+                            }`}
                         >
                           {item.phase}
                         </span>
@@ -599,9 +590,8 @@ export default function HackArenaPage() {
                         </h4>
                       </div>
                       <span
-                        className={`pixel-text text-[10px] sm:text-xs flex-shrink-0 ${
-                          item.isLive ? 'text-green animate-blink' : 'text-blue-400/70'
-                        }`}
+                        className={`pixel-text text-[10px] sm:text-xs flex-shrink-0 ${item.isLive ? 'text-green animate-blink' : 'text-blue-400/70'
+                          }`}
                       >
                         {item.date}
                       </span>
@@ -651,6 +641,7 @@ export default function HackArenaPage() {
                     { label: 'Team Size', text: 'Minimum of 2 and maximum of 4 members.' },
                     { label: 'Single Entry', text: 'Only one submission is permitted per team. Duplicate entries may lead to disqualification.' },
                     { label: 'Availability', text: 'By registering, all team members confirm their availability for the Offline Grand Finale on 5th & 6th March at the VIT College – Kondhwa Campus.' },
+                    { label: 'Eligibility', text: 'The hackathon is open to all undergraduate engineering students currently enrolled in a recognized institution, including those pursuing Bachelor of Engineering (B.E.), Bachelor of Technology (B.Tech), Bachelor of Computer Applications (BCA), Bachelor of Science in Engineering (B.Sc. Engineering), and other equivalent bachelor\'s engineering degrees, provided they hold a valid student ID at the time of registration.' },
                   ],
                 },
                 {
