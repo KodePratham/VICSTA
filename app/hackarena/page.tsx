@@ -315,19 +315,35 @@ export default function HackArenaPage() {
               className="object-contain drop-shadow-[0_0_15px_rgba(96,165,250,0.5)] hover:scale-110 transition-transform duration-300"
             />
           </button>
-          <button
-            onClick={() => (window.location.href = '/')}
-            className="pointer-events-auto animate-fade-in cursor-pointer"
-            style={{ animationDelay: '0.2s' }}
-          >
-            <Image
-              src="/VICSTA_logo.png"
-              alt="VICSTA Logo"
-              width={80}
-              height={80}
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => (window.location.href = '/')}
+              className="pointer-events-auto animate-fade-in cursor-pointer"
+              style={{ animationDelay: '0.2s' }}
+            >
+              <Image
+                src="/VICSTA_logo.png"
+                alt="VICSTA Logo"
+                width={95}
+                height={95}
+                className="object-contain drop-shadow-[0_0_15px_rgba(96,165,250,0.5)] hover:scale-110 transition-transform duration-300"
+              />
+            </button>
+            <span className="pixel-text text-blue-400 text-2xl drop-shadow-[0_0_10px_rgba(96,165,250,0.5)] pointer-events-none select-none">✕</span>
+            <button
+              onClick={() => (window.location.href = '/')}
+              className="pointer-events-auto animate-fade-in cursor-pointer"
+              style={{ animationDelay: '0.3s' }}
+            >
+              <Image
+                src="/dssa.png"
+                alt="DSSA Logo"
+                width={80}
+                height={80}
               className="object-contain drop-shadow-[0_0_15px_rgba(96,165,250,0.5)] hover:scale-110 transition-transform duration-300"
             />
-          </button>
+            </button>
+          </div>
         </div>
       </div>
 
