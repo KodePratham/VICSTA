@@ -691,7 +691,7 @@ export default function HackArenaPage() {
                     { label: 'Team Size', text: 'Minimum of 2 and maximum of 4 members.' },
                     { label: 'Single Entry', text: 'Only one submission is permitted per team. Duplicate entries may lead to disqualification.' },
                     { label: 'Availability', text: 'By registering, all team members confirm their availability for the Offline Grand Finale on 5th & 6th March at the VIT College – Kondhwa Campus.' },
-                    { label: 'Eligibility', text: 'The hackathon is open to all undergraduate engineering students currently enrolled in a recognized institution, including those pursuing Bachelor of Engineering (B.E.), Bachelor of Technology (B.Tech), Bachelor of Computer Applications (BCA), Bachelor of Science in Engineering (B.Sc. Engineering), and other equivalent bachelor\'s engineering degrees, provided they hold a valid student ID at the time of registration.' },
+                    { label: 'Eligibility', text: 'The hackathon is open to all undergraduate engineering students currently enrolled in a recognized institution, including those pursuing Bachelor of Engineering (B.E.), Bachelor of Technology (B.Tech).' },
                   ],
                 },
                 {
