@@ -95,9 +95,7 @@
     font-family: 'Press Start 2P', 'Courier New', monospace;
     letter-spacing: 0.05em;
     text-shadow: 
-      2px 2px 0px rgba(100, 255, 218, 0.3),
-      4px 4px 0px rgba(100, 255, 218, 0.2),
-      6px 6px 0px rgba(100, 255, 218, 0.1);
+      1px 1px 0px rgba(100, 255, 218, 0.15);
     image-rendering: pixelated;
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
@@ -107,11 +105,8 @@
     font-family: 'Press Start 2P', 'Courier New', monospace;
     letter-spacing: 0.1em;
     text-shadow: 
-      0 0 10px rgba(100, 255, 218, 0.8),
-      0 0 20px rgba(100, 255, 218, 0.6),
-      0 0 30px rgba(100, 255, 218, 0.4),
-      4px 4px 0px rgba(100, 255, 218, 0.3),
-      8px 8px 0px rgba(100, 255, 218, 0.2);
+      0 0 8px rgba(100, 255, 218, 0.3),
+      2px 2px 0px rgba(100, 255, 218, 0.15);
     image-rendering: pixelated;
     -webkit-font-smoothing: none;
     animation: flicker 3s infinite;
