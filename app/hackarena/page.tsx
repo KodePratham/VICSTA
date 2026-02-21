@@ -781,6 +781,106 @@ export default function HackArenaPage() {
             </div>
           </div>
 
+          {/* ═══════════ CONTACT US ═══════════ */}
+          <div className="mb-12 mt-8">
+            {/* Section Header */}
+            <div className="text-center mb-10">
+              <h2 className="pixel-text text-2xl sm:text-3xl text-blue-400 mb-4 animate-glitch-text">
+                📡 CONTACT US
+              </h2>
+              <div className="h-1 w-40 mx-auto bg-blue-400 animate-pulse-glow mb-6"></div>
+            </div>
+
+            <div className="max-w-4xl mx-auto space-y-6">
+              {/* Social Links Row */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {/* Instagram */}
+                <a
+                  href="https://instagram.com/vicsta_vitpune"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative border-2 border-pink-400 bg-pink-400/5 p-5 flex flex-col items-center gap-3 transition-all duration-300 hover:bg-pink-400/15 hover:shadow-[0_0_25px_rgba(244,114,182,0.4)]"
+                >
+                  <span className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-pink-400"></span>
+                  <span className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-pink-400"></span>
+                  <span className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-pink-400"></span>
+                  <span className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-pink-400"></span>
+                  <span className="text-3xl">📸</span>
+                  <span className="pixel-text text-xs text-pink-400">INSTAGRAM</span>
+                  <span className="font-mono text-xs text-white/50 group-hover:text-white/80 transition-colors">@vicsta_vitpune</span>
+                </a>
+
+                {/* LinkedIn */}
+                <a
+                  href="https://linkedin.com/company/vicsta"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative border-2 border-blue-400 bg-blue-400/5 p-5 flex flex-col items-center gap-3 transition-all duration-300 hover:bg-blue-400/15 hover:shadow-[0_0_25px_rgba(96,165,250,0.4)]"
+                >
+                  <span className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-blue-400"></span>
+                  <span className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-blue-400"></span>
+                  <span className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-blue-400"></span>
+                  <span className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-blue-400"></span>
+                  <span className="text-3xl">💼</span>
+                  <span className="pixel-text text-xs text-blue-400">LINKEDIN</span>
+                  <span className="font-mono text-xs text-white/50 group-hover:text-white/80 transition-colors">VICSTA</span>
+                </a>
+
+                {/* WhatsApp Community */}
+                <a
+                  href="https://chat.whatsapp.com/KuqSGkGlWp81HmstFbYpSQ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative border-2 border-emerald-400 bg-emerald-400/5 p-5 flex flex-col items-center gap-3 transition-all duration-300 hover:bg-emerald-400/15 hover:shadow-[0_0_25px_rgba(52,211,153,0.4)]"
+                >
+                  <span className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-emerald-400"></span>
+                  <span className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-emerald-400"></span>
+                  <span className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-emerald-400"></span>
+                  <span className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-emerald-400"></span>
+                  <span className="text-3xl">💬</span>
+                  <span className="pixel-text text-xs text-emerald-400">WHATSAPP COMMUNITY</span>
+                  <span className="font-mono text-xs text-white/50 group-hover:text-white/80 transition-colors">JOIN NOW</span>
+                </a>
+              </div>
+
+              {/* Contact People */}
+              <div className="border-2 border-blue-400/40 bg-navy/70 p-5 sm:p-6 relative">
+                <span className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-blue-400"></span>
+                <span className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-blue-400"></span>
+                <span className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-blue-400"></span>
+                <span className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-blue-400"></span>
+
+                <h3 className="pixel-text text-xs sm:text-sm text-blue-400 mb-5 flex items-center gap-2">
+                  <span>📞</span> POINT OF CONTACTS
+                </h3>
+                <div className={`h-0.5 w-full bg-blue-400 opacity-20 mb-5`}></div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {[
+                    { name: 'Yash Gaikwad', role: 'Organizer', phone: '+91 8180982359' },
+                    { name: 'Prem Lad', role: 'Organizer', phone: '+91 9175981706' },
+                    { name: 'Pavan Dhote', role: 'Organizer', phone: '+91 9022781644' },
+                  ].map((person, i) => (
+                    <div
+                      key={i}
+                      className="border border-blue-400/30 bg-blue-400/5 p-4 flex flex-col gap-2 transition-all duration-300 hover:border-blue-400/70 hover:bg-blue-400/10"
+                    >
+                      <span className="pixel-text text-[10px] text-blue-400 opacity-60">[{String(i + 1).padStart(2, '0')}]</span>
+                      <span className="pixel-text text-xs text-white">{person.name}</span>
+                      <span className="font-mono text-[10px] text-blue-400/60">{person.role}</span>
+                      <a
+                        href={`tel:${person.phone.replace(/\s/g, '')}`}
+                        className="font-mono text-xs text-emerald-400 hover:text-emerald-300 transition-colors"
+                      >
+                        {person.phone}
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Back Button */}
           <div
             className={`flex justify-center mt-12 mb-4 transition-all duration-700 delay-200 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
