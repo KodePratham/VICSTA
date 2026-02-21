@@ -5,6 +5,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import { HackArenaActionButtons } from '@/components/hackarena/ActionButtons'
 import { HackArenaAwardsSection } from '@/components/hackarena/AwardsSection'
+import { HackArenaSponsorsSection } from '@/components/hackarena/SponsorsSection'
 
 interface ProblemStatement {
   id: string
@@ -802,6 +803,9 @@ export default function HackArenaPage() {
 
           {/* ═══════════ AWARDS (moved below timeline) ═══════════ */}
           <HackArenaAwardsSection />
+
+          {/* ═══════════ SPONSORS ═══════════ */}
+          <HackArenaSponsorsSection />
 
           {/* ═══════════ RULES & GUIDELINES ═══════════ */}
           <div id="section-rules" className="mb-16">
