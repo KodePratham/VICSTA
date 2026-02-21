@@ -403,7 +403,7 @@ export default function HackArenaPage() {
       </div>
 
       {/* Top Corner Logos */}
-      <div className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+      <div className="absolute top-0 left-0 right-0 z-50 pointer-events-none">
         <div className="container flex justify-between items-start py-6">
           <button
             onClick={() => (window.location.href = '/')}
