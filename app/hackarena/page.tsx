@@ -3,6 +3,8 @@
 
 import React, { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
+import { HackArenaActionButtons } from '@/components/hackarena/ActionButtons'
+import { HackArenaAwardsSection } from '@/components/hackarena/AwardsSection'
 
 interface ProblemStatement {
   id: string
@@ -464,52 +466,7 @@ export default function HackArenaPage() {
             <p className="pixel-text text-xs sm:text-sm text-blue-400/70 mb-12">
               PRESENTED BY VICSTA X DSSA
             </p>
-            <div className="announcement-card border-2 border-green bg-green/5 p-6 sm:p-8 relative max-w-3xl mx-auto mb-6">
-              <span className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-green"></span>
-              <span className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-green"></span>
-              <span className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-green"></span>
-              <span className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-green"></span>
 
-              {/* Title */}
-              <h3 className="pixel-text text-sm sm:text-base text-transparent bg-clip-text bg-gradient-to-r from-green to-yellow-400 text-center mb-4">
-                🏆 REWARDS &amp; RECOGNITION
-              </h3>
-
-              {/* Intro */}
-              <p className="font-mono text-sm sm:text-base text-white/70 text-center leading-relaxed mb-6">
-                VICSTA &amp; DSSA are excited to announce exclusive rewards for participants to gain real-world industry experience and celebrate your achievements.
-              </p>
-
-              {/* Internship - Full Width Highlighted */}
-              <div className="border-2 border-green bg-green/10 p-5 sm:p-6 text-center transition-all duration-300 hover:bg-green/15 hover:border-green mb-4 shadow-[0_0_20px_rgba(100,255,218,0.15)]">
-                <span className="text-4xl block mb-3">🎓</span>
-                <h4 className="pixel-text text-xs sm:text-sm text-green mb-3">INTERNSHIP OPPORTUNITIES</h4>
-                <p className="font-mono text-xs sm:text-sm text-white/70 leading-relaxed">
-                  Top 4 Winning Teams will receive exclusive Internship Opportunities, giving you a valuable chance to gain real-world industry experience and strengthen your professional profile.
-                </p>
-              </div>
-
-              {/* Prize Pool & Certificates - Side by Side */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* Prize Pool */}
-                <div className="border border-yellow-400/40 bg-yellow-400/5 p-5 text-center transition-all duration-300 hover:bg-yellow-400/10 hover:border-yellow-400/70">
-                  <span className="text-4xl block mb-3">💰</span>
-                  <h4 className="pixel-text text-xs sm:text-sm text-yellow-400 mb-3">PRIZE POOL</h4>
-                  <p className="font-mono text-xs sm:text-sm text-white/60 leading-relaxed">
-                    Attractive prize pool for top-performing teams
-                  </p>
-                </div>
-
-                {/* Certificates */}
-                <div className="border border-purple-400/40 bg-purple-400/5 p-5 text-center transition-all duration-300 hover:bg-purple-400/10 hover:border-purple-400/70">
-                  <span className="text-4xl block mb-3">🏅</span>
-                  <h4 className="pixel-text text-xs sm:text-sm text-purple-400 mb-3">CERTIFICATES &amp; MEDALS</h4>
-                  <p className="font-mono text-xs sm:text-sm text-white/60 leading-relaxed">
-                    Certificates &amp; medals to recognize and celebrate your achievements
-                  </p>
-                </div>
-              </div>
-            </div>
             <div className="border-2 border-blue-400 bg-blue-400/5 p-4 sm:p-5 relative max-w-4xl mx-auto text-center shadow-[0_0_20px_rgba(96,165,250,0.2)] animate-pulse-glow">
               <span className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-white"></span>
               <span className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-white"></span>
@@ -521,15 +478,17 @@ export default function HackArenaPage() {
             </div>
           </div>
 
-
+          {/* ═══════════ ACTION BUTTONS (Register + PPT) ═══════════ */}
+          <HackArenaActionButtons playSound={playSound} />
 
           {/* Domain Cards Grid */}
           <div
             id="section-domains"
-            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 transition-all duration-700 delay-300 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
+            className={`transition-all duration-700 delay-300 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
           >
-            {domains.map((domain, index) => {
+            {/* Top row: first 3 domains */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+            {domains.slice(0, 3).map((domain, index) => {
               const c = colors(domain.color)
               const isSelected = selectedDomain === index
               return (
@@ -645,6 +604,130 @@ export default function HackArenaPage() {
                 </React.Fragment>
               )
             })}
+            </div>
+
+            {/* Bottom row: last 2 domains – centered */}
+            <div className="flex justify-center">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12 w-full lg:max-w-[66.666%]">
+              {domains.slice(3).map((domain, mapIdx) => {
+                const index = mapIdx + 3
+                const c = colors(domain.color)
+                const isSelected = selectedDomain === index
+                return (
+                  <React.Fragment key={domain.code}>
+                    <button
+                      onClick={() => handleDomainSelect(index)}
+                      className={`menu-card group relative p-6 bg-navy/80 border-4 transition-all duration-300 transform text-left ${c.border
+                        } ${isSelected
+                          ? `scale-[1.02] ${c.glow}`
+                          : 'hover:scale-105 hover:-translate-y-2'
+                        }`}
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      {/* Corner decorations */}
+                      <span className="absolute top-0 left-0 w-4 h-4 border-t-4 border-l-4 border-white"></span>
+                      <span className="absolute top-0 right-0 w-4 h-4 border-t-4 border-r-4 border-white"></span>
+                      <span className="absolute bottom-0 left-0 w-4 h-4 border-b-4 border-l-4 border-white"></span>
+                      <span className="absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 border-white"></span>
+
+                      {/* Icon + Code */}
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-4xl">{domain.icon}</span>
+                        <span className={`pixel-text text-[10px] ${c.text} opacity-70`}>
+                          [{domain.code}]
+                        </span>
+                      </div>
+
+                      {/* Name */}
+                      <h3 className={`pixel-text text-sm sm:text-base ${c.text} mb-2`}>
+                        {domain.name}
+                      </h3>
+
+                      {/* Problem count */}
+                      <p className="font-mono text-xs text-white/50">
+                        {domain.problems.length} PROBLEM STATEMENTS
+                      </p>
+
+                      {/* Select indicator */}
+                      <div
+                        className={`mt-4 inline-flex items-center gap-2 pixel-text text-[10px] border-2 px-3 py-1.5 transition-all duration-300 ${isSelected
+                          ? `${c.border} ${c.bg} text-navy font-bold`
+                          : `border-white/50 text-white/50 group-hover:border-white group-hover:text-white`
+                          }`}
+                      >
+                        {isSelected ? '▼ SELECTED' : '▶ SELECT'}
+                      </div>
+
+                      {/* Glow effect on hover */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        <div className={`absolute inset-0 ${c.glow}`}></div>
+                      </div>
+                    </button>
+
+                    {/* Problem Statements Panel – spans full grid width */}
+                    {isSelected && (
+                      <div className="col-span-1 sm:col-span-2 animate-menu-appear">
+                        <div className={`border-4 ${c.border} bg-navy/90 p-6 sm:p-8`}>
+                          {/* Domain Header */}
+                          <div className="flex items-center gap-4 mb-8">
+                            <span className="text-5xl">{domain.icon}</span>
+                            <div>
+                              <h2 className={`pixel-text text-lg sm:text-xl ${c.text} mb-1`}>
+                                {domain.name}
+                              </h2>
+                              <p className={`pixel-text text-[10px] ${c.text} opacity-60`}>
+                                DOMAIN: {domain.code} &bull; {domain.problems.length} CHALLENGES
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className={`h-0.5 w-full ${c.bg} opacity-30 mb-8`}></div>
+
+                          {/* Problem Cards */}
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {domain.problems.map((problem, pIndex) => (
+                              <div
+                                key={problem.id}
+                                className={`group relative bg-navy/60 border-2 ${c.border} border-opacity-40 p-5 transition-all duration-300 hover:border-opacity-100 hover:${c.glow}`}
+                                style={{ animationDelay: `${pIndex * 0.05}s` }}
+                              >
+                                {/* Problem ID badge */}
+                                <div className="flex items-center justify-between mb-3">
+                                  <span
+                                    className={`pixel-text text-[10px] ${c.bg} text-navy px-2 py-1 font-bold`}
+                                  >
+                                    {problem.id}
+                                  </span>
+                                </div>
+
+                                {/* Problem Title */}
+                                <h4 className={`pixel-text text-xs sm:text-sm ${c.text} mb-3`}>
+                                  {problem.title}
+                                </h4>
+
+                                {/* Problem Description */}
+                                <p className="font-mono text-xs text-white/60 leading-relaxed">
+                                  {problem.description}
+                                </p>
+
+                                {/* Corner accents */}
+                                <span
+                                  className={`absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 ${c.border}`}
+                                ></span>
+                                <span
+                                  className={`absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 ${c.border}`}
+                                ></span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </React.Fragment>
+                )
+              })}
+              </div>
+            </div>
           </div>
 
           {/* ═══════════ TIMELINE ═══════════ */}
@@ -720,57 +803,8 @@ export default function HackArenaPage() {
             </div>
           </div>
 
-          {/* ═══════════ REGISTER BUTTON ═══════════ */}
-          <div id="section-register" className="flex justify-center my-12">
-            <button
-              onClick={() => {
-                playSound()
-                window.open('https://forms.gle/pTqDabNQq9pM5PaB7', '_blank')
-              }}
-              className="game-button-blue group relative px-10 sm:px-16 py-5 sm:py-7 text-sm sm:text-base md:text-xl font-bold transition-all duration-300 hover:scale-110"
-            >
-              {/* Button decorative corners */}
-              <span className="absolute top-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-t-2 sm:border-t-4 border-l-2 sm:border-l-4 border-green"></span>
-              <span className="absolute top-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-t-2 sm:border-t-4 border-r-2 sm:border-r-4 border-green"></span>
-              <span className="absolute bottom-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-b-2 sm:border-b-4 border-l-2 sm:border-l-4 border-green"></span>
-              <span className="absolute bottom-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-b-2 sm:border-b-4 border-r-2 sm:border-r-4 border-green"></span>
-
-              {/* Button text */}
-              <span className="relative pixel-text text-green group-hover:text-navy transition-colors duration-300 flex items-center gap-3">
-                <span className="text-2xl">🚀</span>
-                REGISTER HERE
-                <span className="text-2xl">🚀</span>
-              </span>
-
-              {/* Hover background */}
-              <span className="absolute inset-0 bg-green transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left -z-10"></span>
-
-              {/* Animated border */}
-              <span className="absolute inset-0 border-2 border-green shadow-[0_0_20px_rgba(100,255,218,0.4)] group-hover:shadow-[0_0_40px_rgba(100,255,218,0.8)] transition-shadow duration-300"></span>
-            </button>
-          </div>
-
-          {/* ═══════════ PPT TEMPLATE DOWNLOAD ═══════════ */}
-          <div id="section-ppt" className="flex justify-center my-8">
-            <a
-              href="/HACKARENA_TEMPLATE.pptx"
-              download
-              onClick={() => playSound()}
-              className="game-button-blue group relative px-10 sm:px-16 py-5 sm:py-7 text-sm sm:text-base md:text-xl font-bold transition-all duration-300 hover:scale-110 inline-block"
-            >
-              <span className="absolute top-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-t-2 sm:border-t-4 border-l-2 sm:border-l-4 border-yellow-400"></span>
-              <span className="absolute top-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-t-2 sm:border-t-4 border-r-2 sm:border-r-4 border-yellow-400"></span>
-              <span className="absolute bottom-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-b-2 sm:border-b-4 border-l-2 sm:border-l-4 border-yellow-400"></span>
-              <span className="absolute bottom-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-b-2 sm:border-b-4 border-r-2 sm:border-r-4 border-yellow-400"></span>
-              <span className="relative pixel-text text-yellow-400 group-hover:text-navy transition-colors duration-300 flex items-center gap-3">
-                <span className="text-2xl">📥</span>
-                DOWNLOAD PPT TEMPLATE
-                <span className="text-2xl">📥</span>
-              </span>
-              <span className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left -z-10"></span>
-              <span className="absolute inset-0 border-2 border-yellow-400 shadow-[0_0_20px_rgba(250,204,21,0.4)] group-hover:shadow-[0_0_40px_rgba(250,204,21,0.8)] transition-shadow duration-300"></span>
-            </a>
-          </div>
+          {/* ═══════════ AWARDS (moved below timeline) ═══════════ */}
+          <HackArenaAwardsSection />
 
           {/* ═══════════ RULES & GUIDELINES ═══════════ */}
           <div id="section-rules" className="mb-16">
