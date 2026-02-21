@@ -404,7 +404,7 @@ export default function HackArenaPage() {
 
       {/* Top Corner Logos */}
       <div className="absolute top-0 left-0 right-0 z-50 pointer-events-none">
-        <div className="container flex justify-between items-start py-6">
+        <div className="container flex justify-between items-start py-4 sm:py-6">
           <button
             onClick={() => (window.location.href = '/')}
             className="pointer-events-auto animate-fade-in cursor-pointer"
@@ -414,10 +414,10 @@ export default function HackArenaPage() {
               alt="VIT Logo"
               width={80}
               height={80}
-              className="object-contain drop-shadow-[0_0_15px_rgba(96,165,250,0.5)] hover:scale-110 transition-transform duration-300"
+              className="object-contain drop-shadow-[0_0_15px_rgba(96,165,250,0.5)] hover:scale-110 transition-transform duration-300 w-12 h-12 sm:w-20 sm:h-20"
             />
           </button>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <button
               onClick={() => (window.location.href = '/')}
               className="pointer-events-auto animate-fade-in cursor-pointer"
@@ -428,10 +428,10 @@ export default function HackArenaPage() {
                 alt="VICSTA Logo"
                 width={95}
                 height={95}
-                className="object-contain drop-shadow-[0_0_15px_rgba(96,165,250,0.5)] hover:scale-110 transition-transform duration-300"
+                className="object-contain drop-shadow-[0_0_15px_rgba(96,165,250,0.5)] hover:scale-110 transition-transform duration-300 w-12 h-12 sm:w-24 sm:h-24"
               />
             </button>
-            <span className="pixel-text text-blue-400 text-2xl drop-shadow-[0_0_10px_rgba(96,165,250,0.5)] pointer-events-none select-none">✕</span>
+            <span className="pixel-text text-blue-400 text-lg sm:text-2xl drop-shadow-[0_0_10px_rgba(96,165,250,0.5)] pointer-events-none select-none">✕</span>
             <button
               onClick={() => (window.location.href = '/')}
               className="pointer-events-auto animate-fade-in cursor-pointer"
@@ -442,15 +442,15 @@ export default function HackArenaPage() {
                 alt="DSSA Logo"
                 width={80}
                 height={80}
-              className="object-contain drop-shadow-[0_0_15px_rgba(96,165,250,0.5)] hover:scale-110 transition-transform duration-300"
-            />
+                className="object-contain drop-shadow-[0_0_15px_rgba(96,165,250,0.5)] hover:scale-110 transition-transform duration-300 w-12 h-12 sm:w-20 sm:h-20"
+              />
             </button>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 min-h-screen pt-28 pb-28 lg:pb-16 px-4">
+      <div className="relative z-10 min-h-screen pt-36 sm:pt-28 pb-28 lg:pb-16 px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div
@@ -458,7 +458,7 @@ export default function HackArenaPage() {
             className={`text-center mb-12 transition-all duration-1000 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
               }`}
           >
-            <h1 className="pixel-game-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-blue-400 mb-4 animate-glitch-text leading-tight">
+            <h1 className="pixel-game-text text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-blue-400 mb-4 animate-glitch-text leading-tight break-words">
               HACKARENA&apos;26
             </h1>
             <p className="pixel-text text-xs sm:text-sm text-blue-400/70 mb-12">
@@ -515,7 +515,7 @@ export default function HackArenaPage() {
               <span className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-white"></span>
               <span className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-white"></span>
               <span className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-white"></span>
-              <p className="font-mono text-sm sm:text-base md:text-lg text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 font-bold tracking-wide whitespace-nowrap">
+              <p className="font-mono text-sm sm:text-base md:text-lg text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 font-bold tracking-wide text-center leading-relaxed">
                 Choose your battlefield. 5 domains. 25 problem statements. One arena.
               </p>
             </div>
