@@ -103,13 +103,19 @@
   
   .pixel-game-text {
     font-family: 'Press Start 2P', 'Courier New', monospace;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     text-shadow: 
       0 0 8px rgba(100, 255, 218, 0.3),
       2px 2px 0px rgba(100, 255, 218, 0.15);
     image-rendering: pixelated;
     -webkit-font-smoothing: none;
     animation: flicker 3s infinite;
+  }
+
+  @media (min-width: 640px) {
+    .pixel-game-text {
+      letter-spacing: 0.1em;
+    }
   }
   
   .game-button {
@@ -367,13 +373,15 @@
 /* Prevent flash of unstyled content */
 html {
   color-scheme: dark;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 /* Responsive text sizes */
 @media (max-width: 640px) {
-  h1 {
-    @apply text-4xl;
-  }
   h2 {
     @apply text-3xl;
   }
