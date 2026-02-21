@@ -317,7 +317,6 @@ export default function HackArenaPage() {
           { id: 'section-header',   label: 'INTRO'    },
           { id: 'section-domains',  label: 'DOMAINS'  },
           { id: 'section-timeline', label: 'TIMELINE' },
-          { id: 'section-register', label: 'REGISTER' },
           { id: 'section-rules',    label: 'RULES'    },
           { id: 'section-contact',  label: 'CONTACT'  },
         ].map((item) => {
@@ -354,12 +353,11 @@ export default function HackArenaPage() {
       <nav className="fixed bottom-0 left-0 right-0 z-50 lg:hidden pointer-events-auto bg-black/80 border-t border-blue-400/20 backdrop-blur-sm">
         <div className="flex items-center justify-around px-1 py-2">
           {[
-            { id: 'section-header',   label: 'INTRO',    icon: '⬛' },
-            { id: 'section-domains',  label: 'PROBLEM STATEMENT',  icon: '🎮' },
-            { id: 'section-timeline', label: 'TIMELINE', icon: '⏳' },
-            { id: 'section-register', label: 'REGISTER', icon: '🚀' },
-            { id: 'section-rules',    label: 'RULES',    icon: '⚖️' },
-            { id: 'section-contact',  label: 'CONTACT',  icon: '📡' },
+            { id: 'section-header',   label: 'INTRO' },
+            { id: 'section-domains',  label: 'PROBLEM STATEMENT' },
+            { id: 'section-timeline', label: 'TIMELINE' },
+            { id: 'section-rules',    label: 'RULES' },
+            { id: 'section-contact',  label: 'CONTACT' },
           ].map((item) => {
             const isActive = activeSection === item.id
             return (
@@ -371,7 +369,6 @@ export default function HackArenaPage() {
                 }`}
                 aria-label={item.label}
               >
-                <span className="text-base leading-none">{item.icon}</span>
                 <span
                   className={`pixel-text text-[7px] whitespace-nowrap transition-colors duration-200 ${
                     isActive ? 'text-blue-400' : 'text-blue-400/60'
