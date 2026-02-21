@@ -252,6 +252,7 @@ const domainColorMap: Record<string, { border: string; text: string; bg: string;
 export default function HackArenaPage() {
   const [selectedDomain, setSelectedDomain] = useState<number | null>(null)
   const [showContent, setShowContent] = useState(false)
+  const [activeSection, setActiveSection] = useState<string>('section-header')
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
@@ -282,8 +283,109 @@ export default function HackArenaPage() {
 
   const colors = (c: string) => domainColorMap[c] || domainColorMap['blue-400']
 
+  useEffect(() => {
+    const sectionIds = [
+      'section-header',
+      'section-domains',
+      'section-timeline',
+      'section-register',
+      'section-ppt',
+      'section-rules',
+      'section-contact',
+    ]
+    const observers: IntersectionObserver[] = []
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id)
+      if (!el) return
+      const observer = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id) },
+        { threshold: 0.3 }
+      )
+      observer.observe(el)
+      observers.push(observer)
+    })
+    return () => observers.forEach((o) => o.disconnect())
+  }, [])
+
   return (
     <div className="min-h-screen w-full relative overflow-hidden bg-black">
+      {/* ═══════════ NAV SIDEBAR – desktop left strip ═══════════ */}
+      <nav className="fixed left-3 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-1 pointer-events-auto">
+        {[
+          { id: 'section-header',   label: 'INTRO'    },
+          { id: 'section-domains',  label: 'DOMAINS'  },
+          { id: 'section-timeline', label: 'TIMELINE' },
+          { id: 'section-register', label: 'REGISTER' },
+          { id: 'section-rules',    label: 'RULES'    },
+          { id: 'section-contact',  label: 'CONTACT'  },
+        ].map((item) => {
+          const isActive = activeSection === item.id
+          return (
+            <button
+              key={item.id}
+              onClick={() => document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+              className={`flex items-center gap-2 px-2 py-1.5 transition-all duration-200 hover:scale-105 ${
+                isActive ? 'bg-blue-400/10 border-l-2 border-blue-400' : 'border-l-2 border-transparent hover:border-blue-400/50'
+              }`}
+              aria-label={item.label}
+            >
+              <div
+                className={`w-2 h-2 flex-shrink-0 border transition-all duration-300 ${
+                  isActive
+                    ? 'bg-blue-400 border-blue-400 shadow-[0_0_8px_rgba(96,165,250,0.9)] rotate-45 scale-125'
+                    : 'bg-transparent border-blue-400/50 rotate-45'
+                }`}
+              />
+              <span
+                className={`pixel-text text-[9px] whitespace-nowrap transition-colors duration-200 ${
+                  isActive ? 'text-blue-400' : 'text-blue-400/50'
+                }`}
+              >
+                {item.label}
+              </span>
+            </button>
+          )
+        })}
+      </nav>
+
+      {/* ═══════════ NAV BAR – mobile / tablet bottom strip ═══════════ */}
+      <nav className="fixed bottom-0 left-0 right-0 z-50 lg:hidden pointer-events-auto bg-black/80 border-t border-blue-400/20 backdrop-blur-sm">
+        <div className="flex items-center justify-around px-1 py-2">
+          {[
+            { id: 'section-header',   label: 'INTRO',    icon: '⬛' },
+            { id: 'section-domains',  label: 'PROBLEM STATEMENT',  icon: '🎮' },
+            { id: 'section-timeline', label: 'TIMELINE', icon: '⏳' },
+            { id: 'section-register', label: 'REGISTER', icon: '🚀' },
+            { id: 'section-rules',    label: 'RULES',    icon: '⚖️' },
+            { id: 'section-contact',  label: 'CONTACT',  icon: '📡' },
+          ].map((item) => {
+            const isActive = activeSection === item.id
+            return (
+              <button
+                key={item.id}
+                onClick={() => document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                className={`flex flex-col items-center gap-0.5 px-1 py-1 transition-all duration-200 ${
+                  isActive ? 'scale-110' : 'opacity-50'
+                }`}
+                aria-label={item.label}
+              >
+                <span className="text-base leading-none">{item.icon}</span>
+                <span
+                  className={`pixel-text text-[7px] whitespace-nowrap transition-colors duration-200 ${
+                    isActive ? 'text-blue-400' : 'text-blue-400/60'
+                  }`}
+                >
+                  {item.label}
+                </span>
+                {isActive && (
+                  <div className="w-1 h-1 bg-blue-400 rounded-none shadow-[0_0_6px_rgba(96,165,250,0.9)]" />
+                )}
+              </button>
+            )
+          })}
+        </div>
+      </nav>
+
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
         <video
@@ -332,10 +434,11 @@ export default function HackArenaPage() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 min-h-screen pt-28 pb-16 px-4">
+      <div className="relative z-10 min-h-screen pt-28 pb-28 lg:pb-16 px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div
+            id="section-header"
             className={`text-center mb-12 transition-all duration-1000 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
               }`}
           >
@@ -406,6 +509,7 @@ export default function HackArenaPage() {
 
           {/* Domain Cards Grid */}
           <div
+            id="section-domains"
             className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 transition-all duration-700 delay-300 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
           >
@@ -528,7 +632,7 @@ export default function HackArenaPage() {
           </div>
 
           {/* ═══════════ TIMELINE ═══════════ */}
-          <div className="mb-16 mt-8">
+          <div id="section-timeline" className="mb-16 mt-8">
             {/* Section Header */}
             <div className="text-center mb-10">
               <h2 className="pixel-text text-2xl sm:text-3xl text-blue-400 mb-4 animate-glitch-text">
@@ -601,7 +705,7 @@ export default function HackArenaPage() {
           </div>
 
           {/* ═══════════ REGISTER BUTTON ═══════════ */}
-          <div className="flex justify-center my-12">
+          <div id="section-register" className="flex justify-center my-12">
             <button
               onClick={() => {
                 playSound()
@@ -631,7 +735,7 @@ export default function HackArenaPage() {
           </div>
 
           {/* ═══════════ PPT TEMPLATE DOWNLOAD ═══════════ */}
-          <div className="flex justify-center my-8">
+          <div id="section-ppt" className="flex justify-center my-8">
             <a
               href="/HACKARENA_TEMPLATE.pptx"
               download
@@ -653,7 +757,7 @@ export default function HackArenaPage() {
           </div>
 
           {/* ═══════════ RULES & GUIDELINES ═══════════ */}
-          <div className="mb-16">
+          <div id="section-rules" className="mb-16">
             {/* Section Header */}
             <div className="text-center mb-10">
               <h2 className="pixel-text text-2xl sm:text-3xl text-blue-400 mb-4 animate-glitch-text">
@@ -782,7 +886,7 @@ export default function HackArenaPage() {
           </div>
 
           {/* ═══════════ CONTACT US ═══════════ */}
-          <div className="mb-12 mt-8">
+          <div id="section-contact" className="mb-12 mt-8">
             {/* Section Header */}
             <div className="text-center mb-10">
               <h2 className="pixel-text text-2xl sm:text-3xl text-blue-400 mb-4 animate-glitch-text">
