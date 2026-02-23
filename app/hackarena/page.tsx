@@ -983,7 +983,7 @@ export default function HackArenaPage() {
 
                 {/* WhatsApp Community */}
                 <a
-                  href="https://chat.whatsapp.com/KuqSGkGlWp81HmstFbYpSQ"
+                  href="https://chat.whatsapp.com/G3vnp4VWndm8w7sQcFLBem?mode=gi_t"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative border-2 border-emerald-400 bg-emerald-400/5 p-5 flex flex-col items-center gap-3 transition-all duration-300 hover:bg-emerald-400/15 hover:shadow-[0_0_25px_rgba(52,211,153,0.4)]"
