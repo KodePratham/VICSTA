@@ -744,8 +744,8 @@ export default function HackArenaPage() {
               <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-0.5 bg-blue-400/30"></div>
 
               {[
-                { phase: 'PHASE 1', event: 'Registrations & PPT Submission Open', date: 'LIVE NOW', isLive: true },
-                { phase: 'PHASE 1', event: 'Round 1 Submission Deadline', date: '28th Feb (11:59 PM)', isLive: false },
+                { phase: 'PHASE 1', event: 'Registrations Open', date: 'LIVE NOW', isLive: true },
+                { phase: 'PHASE 1', event: 'Round 1 Submission', date: '27th-28th Feb (11:59 PM)', isLive: false },
                 { phase: 'INTERMISSION', event: 'Shortlisting & Evaluation', date: '1st March', isLive: false },
                 { phase: 'ANNOUNCEMENT', event: 'Round 1 Results (Finalists Declared)', date: '2nd March', isLive: false },
                 { phase: 'PHASE 2', event: 'Round 2 Registration & Fee Payment', date: '2nd – 4th March', isLive: false },
