@@ -47,7 +47,10 @@ export function HackArenaAwardsSection() {
             <span className="text-4xl block mb-3">💰</span>
             <h4 className="pixel-text text-xs sm:text-sm text-yellow-400 mb-3">PRIZE POOL</h4>
             <p className="font-mono text-xs sm:text-sm text-white/60 leading-relaxed">
-              Attractive prize pool for top-performing teams
+              10,000 Rs
+            </p>
+            <p className="font-mono text-xs sm:text-sm text-white/60 leading-relaxed">
+              Compete. Win. Get Rewarded.
             </p>
           </div>
 
