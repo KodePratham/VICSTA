@@ -15,7 +15,7 @@ export function HackArenaActionButtons({ playSound }: ActionButtonsProps) {
       <button
         onClick={() => {
           playSound()
-          window.open('https://forms.gle/pTqDabNQq9pM5PaB7', '_blank')
+          window.open('https://forms.gle/reJDiUW6hxaGJaTX6', '_blank')
         }}
         className="game-button-blue group relative px-10 sm:px-16 py-5 sm:py-7 text-sm sm:text-base md:text-xl font-bold transition-all duration-300 hover:scale-110"
       >
@@ -27,9 +27,9 @@ export function HackArenaActionButtons({ playSound }: ActionButtonsProps) {
 
         {/* Button text */}
         <span className="relative pixel-text text-green group-hover:text-navy transition-colors duration-300 flex items-center gap-3">
-          <span className="text-2xl">🚀</span>
-          REGISTER HERE
-          <span className="text-2xl">🚀</span>
+          <span className="text-2xl">📤</span>
+          SUBMIT PPT HERE
+          <span className="text-2xl">📤</span>
         </span>
 
         {/* Hover background */}
