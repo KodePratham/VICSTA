@@ -10,34 +10,37 @@ interface ActionButtonsProps {
 
 export function HackArenaActionButtons({ playSound }: ActionButtonsProps) {
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-center gap-6 my-12">
-      {/* ═══════════ REGISTER BUTTON ═══════════ */}
-      <button
-        onClick={() => {
-          playSound()
-          window.open('https://forms.gle/reJDiUW6hxaGJaTX6', '_blank')
-        }}
-        className="game-button-blue group relative px-10 sm:px-16 py-5 sm:py-7 text-sm sm:text-base md:text-xl font-bold transition-all duration-300 hover:scale-110"
-      >
-        {/* Button decorative corners */}
-        <span className="absolute top-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-t-2 sm:border-t-4 border-l-2 sm:border-l-4 border-green"></span>
-        <span className="absolute top-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-t-2 sm:border-t-4 border-r-2 sm:border-r-4 border-green"></span>
-        <span className="absolute bottom-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-b-2 sm:border-b-4 border-l-2 sm:border-l-4 border-green"></span>
-        <span className="absolute bottom-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-b-2 sm:border-b-4 border-r-2 sm:border-r-4 border-green"></span>
+    <div className="flex flex-col items-center justify-center gap-6 my-12">
 
-        {/* Button text */}
-        <span className="relative pixel-text text-green group-hover:text-navy transition-colors duration-300 flex items-center gap-3">
-          <span className="text-2xl">📤</span>
-          SUBMIT PPT HERE
-          <span className="text-2xl">📤</span>
+      {/* ═══════════ PPT SUBMISSION CLOSED BANNER ═══════════ */}
+      <div className="relative w-full max-w-2xl border-2 border-red-500 bg-red-500/10 px-8 py-6 flex flex-col items-center gap-3 shadow-[0_0_30px_rgba(239,68,68,0.3)]">
+        {/* Corner accents */}
+        <span className="absolute top-0 left-0 w-5 h-5 border-t-4 border-l-4 border-red-500"></span>
+        <span className="absolute top-0 right-0 w-5 h-5 border-t-4 border-r-4 border-red-500"></span>
+        <span className="absolute bottom-0 left-0 w-5 h-5 border-b-4 border-l-4 border-red-500"></span>
+        <span className="absolute bottom-0 right-0 w-5 h-5 border-b-4 border-r-4 border-red-500"></span>
+
+        {/* Status tag */}
+        <span className="font-mono text-[10px] font-bold bg-red-500 text-white px-3 py-1 tracking-widest">
+          ● SUBMISSION CLOSED
         </span>
 
-        {/* Hover background */}
-        <span className="absolute inset-0 bg-green transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left -z-10"></span>
+        {/* Main message */}
+        <p className="pixel-text text-lg sm:text-2xl text-red-400 text-center leading-snug">
+          PPT SUBMISSION OVER
+        </p>
+        <p className="font-mono text-xs sm:text-sm text-white/50 text-center">
+          Round 1 submissions closed on 28th February, 5:00 PM.
+        </p>
 
-        {/* Animated border */}
-        <span className="absolute inset-0 border-2 border-green shadow-[0_0_20px_rgba(100,255,218,0.4)] group-hover:shadow-[0_0_40px_rgba(100,255,218,0.8)] transition-shadow duration-300"></span>
-      </button>
+        {/* Divider */}
+        <div className="h-px w-full bg-red-500/30 my-1"></div>
+
+        {/* Next step hint */}
+        <p className="font-mono text-xs text-red-400/70 text-center tracking-wide">
+          ⏳ SHORTLISTING &amp; EVALUATION IN PROGRESS — Results on 2nd March
+        </p>
+      </div>
 
       {/* ═══════════ PPT TEMPLATE DOWNLOAD ═══════════ */}
       <a
