@@ -4,11 +4,7 @@
 
 import React from 'react'
 
-interface ActionButtonsProps {
-  playSound: () => void
-}
-
-export function HackArenaActionButtons({ playSound }: ActionButtonsProps) {
+export function HackArenaActionButtons() {
   return (
     <div className="flex flex-col items-center justify-center gap-6 my-12">
 

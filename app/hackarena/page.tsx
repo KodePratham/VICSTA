@@ -477,7 +477,7 @@ export default function HackArenaPage() {
           </div>
 
           {/* ═══════════ ACTION BUTTONS (Register + PPT) ═══════════ */}
-          <HackArenaActionButtons playSound={playSound} />
+          <HackArenaActionButtons />
 
           {/* Domain Cards Grid */}
           <div
