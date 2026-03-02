@@ -12,7 +12,7 @@ interface Sponsor {
 
 const sponsors: Sponsor[] = [
   { name: 'IEEE Computer Society', logo: '/sponsor1.jpeg', website: 'https://www.computer.org/' },
-  { name: 'Sunhsine IOTronics', logo: '/sponsor2.jpeg', website: 'https://www.linkedin.com/company/sunshine-iotronics-llp/' },
+  { name: 'Sunshine IOTronics', logo: '/sponsor2.jpeg', website: 'https://www.linkedin.com/company/sunshine-iotronics-llp/' },
   { name: 'SCOI TECHNOLOGIES', logo: '/sponsor3.jpeg', website: 'https://www.scoi.io/' },
 ]
 
