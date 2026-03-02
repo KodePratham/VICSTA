@@ -745,8 +745,8 @@ export default function HackArenaPage() {
 
               {[
                 { phase: 'PHASE 1', event: 'Registrations Closed', date: 'Closed', isLive: false },
-                { phase: 'PHASE 1', event: 'Round 1 Submission', date: 'Till 28th Feb 11:59pm', isLive: true },
-                { phase: 'INTERMISSION', event: 'Shortlisting & Evaluation', date: '1st March', isLive: false },
+                { phase: 'PHASE 1', event: 'Round 1 Submission', date: 'Till 28th Feb 11:59pm', isLive: false },
+                { phase: 'INTERMISSION', event: 'Shortlisting & Evaluation', date: '1st March', isLive: true },
                 { phase: 'ANNOUNCEMENT', event: 'Round 1 Results (Finalists Declared)', date: '2nd March', isLive: false },
                 { phase: 'PHASE 2', event: 'Round 2 Registration & Fee Payment', date: '2nd – 4th March', isLive: false },
                 { phase: 'GRAND FINALE', event: 'Day 1: Hacking & Mentorship', date: '5th March', isLive: false },
