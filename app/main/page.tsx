@@ -13,6 +13,8 @@ export default function MainPage() {
   // EVENTS DATA + STATE
 const [currentEvent, setCurrentEvent] = useState(0)
 
+const [videoLoaded, setVideoLoaded] = useState(false)
+
 const events = [
   {
     title: 'VICSTA ORIENTATION 2025',
@@ -86,6 +88,11 @@ const events = [
         audioRef.current = null
       }
     }
+  }, [])
+
+  useEffect(() => {
+    const timer = setTimeout(() => setVideoLoaded(true), 100)
+    return () => clearTimeout(timer)
   }, [])
 
   const playSound = () => {
@@ -162,16 +169,20 @@ const events = [
     <div className="min-h-screen w-full relative overflow-hidden bg-black">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: 'brightness(0.4)' }}
-        >
-          <source src="/pixel-city.mp4" type="video/mp4" />
-        </video>
+        {videoLoaded ? (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ filter: 'brightness(0.4)' }}
+          >
+            <source src="/pixel-city.mp4" type="video/mp4" />
+          </video>
+        ) : (
+          <div className="absolute inset-0 bg-black" />
+        )}
         <div className="absolute inset-0 bg-gradient-radial from-transparent via-navy/40 to-navy/90"></div>
         <div className="absolute inset-0 scanline-effect pointer-events-none"></div>
       </div>
