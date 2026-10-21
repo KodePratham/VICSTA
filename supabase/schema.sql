@@ -2,7 +2,7 @@
 
 create table if not exists score_entries (
   id bigint generated always as identity primary key,
-  game text not null check (game in ('wrong_answers_only', 'guess_the_meme', 'paper_cup_stacking')),
+  game text not null check (game in ('wrong_answers_only', 'guess_the_meme', 'paper_cup_stacking', 'dance_passing_chain')),
   division text not null check (division in ('A', 'B', 'C')),
   points integer not null,
   note text,

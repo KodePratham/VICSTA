@@ -110,7 +110,7 @@ export function AdminPanel() {
 
         <div>
           <p className="pixel-text text-xs text-white/70 mb-2">GAME</p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {GAMES.map((g) => (
               <button
                 type="button"

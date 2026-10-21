@@ -2,6 +2,7 @@ export const GAMES = [
   { id: 'wrong_answers_only', label: 'Wrong Answers Only', icon: '🙃' },
   { id: 'guess_the_meme', label: 'Guess the Meme', icon: '😂' },
   { id: 'paper_cup_stacking', label: 'Paper Cup Stacking', icon: '🥤' },
+  { id: 'dance_passing_chain', label: 'Dance Passing Chain', icon: '💃' },
 ] as const
 
 export const DIVISIONS = ['A', 'B', 'C'] as const

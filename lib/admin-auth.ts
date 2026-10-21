@@ -4,9 +4,17 @@ import { cookies } from 'next/headers'
 export const SESSION_COOKIE = 'orientation_admin'
 export const SESSION_MAX_AGE_SECONDS = 60 * 60 * 12 // 12 hours
 
+// Uses ADMIN_SESSION_SECRET if set; otherwise derives a signing key from the admin
+// credentials so no extra env var is needed. Changing the username/password
+// invalidates existing sessions.
 function getSecret(): string | null {
-  const secret = process.env.ADMIN_SESSION_SECRET
-  return secret && secret.length >= 16 ? secret : null
+  const explicit = process.env.ADMIN_SESSION_SECRET
+  if (explicit && explicit.length >= 16) return explicit
+
+  const user = process.env.ADMIN_USERNAME
+  const pass = process.env.ADMIN_PASSWORD
+  if (!user || !pass) return null
+  return createHmac('sha256', 'orientation-session-key').update(`${user}\n${pass}`).digest('hex')
 }
 
 function sign(payload: string, secret: string): string {

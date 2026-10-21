@@ -26,7 +26,7 @@ export async function POST(request: Request) {
   const token = createSessionToken()
   if (!token) {
     return NextResponse.json(
-      { error: 'Server is missing ADMIN_SESSION_SECRET (min 16 chars)' },
+      { error: 'Server is missing ADMIN_USERNAME / ADMIN_PASSWORD' },
       { status: 500 }
     )
   }
