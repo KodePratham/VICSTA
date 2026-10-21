@@ -3,6 +3,7 @@
 
 import React, { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
+import { BackgroundVideo } from '@/components/BackgroundVideo'
 import { HackArenaActionButtons } from '@/components/hackarena/ActionButtons'
 import { HackArenaAwardsSection } from '@/components/hackarena/AwardsSection'
 import { HackArenaSponsorsSection } from '@/components/hackarena/SponsorsSection'
@@ -388,16 +389,7 @@ export default function HackArenaPage() {
 
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover animate-video-zoom"
-          style={{ filter: 'brightness(0.4)' }}
-        >
-          <source src="/pixel-city.mp4" type="video/mp4" />
-        </video>
+        <BackgroundVideo className="animate-video-zoom" brightness={0.4} />
         <div className="absolute inset-0 bg-gradient-radial from-transparent via-navy/30 to-navy/80"></div>
         <div className="absolute inset-0 scanline-effect pointer-events-none"></div>
       </div>

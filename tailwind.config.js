@@ -12,8 +12,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
-        mono: ['Roboto Mono', 'monospace'],
+        poppins: ['var(--font-poppins)', 'Poppins', 'sans-serif'],
+        mono: ['var(--font-roboto-mono)', 'Roboto Mono', 'monospace'],
       },
       colors: {
         navy: '#0A192F',

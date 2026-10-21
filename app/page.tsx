@@ -3,6 +3,7 @@
 
 import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
+import { BackgroundVideo } from '@/components/BackgroundVideo'
 
 export default function LandingPage() {
   const [introComplete, setIntroComplete] = useState(false)
@@ -104,16 +105,7 @@ export default function LandingPage() {
     <div className="min-h-screen w-full relative overflow-hidden bg-black">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover animate-video-zoom"
-          style={{ filter: 'brightness(0.6)' }}
-        >
-          <source src="/pixel-city.mp4" type="video/mp4" />
-        </video>
+        <BackgroundVideo className="animate-video-zoom" brightness={0.6} />
         {/* Vignette overlay */}
         <div className="absolute inset-0 bg-gradient-radial from-transparent via-navy/30 to-navy/80"></div>
         {/* Scanline effect */}
@@ -133,6 +125,7 @@ export default function LandingPage() {
               alt="VIT Logo" 
               width={80} 
               height={80}
+              priority
               className="object-contain drop-shadow-[0_0_15px_rgba(96,165,250,0.5)] hover:scale-110 transition-transform duration-300"
             />
           </button>
@@ -148,6 +141,7 @@ export default function LandingPage() {
               alt="VICSTA Logo" 
               width={80} 
               height={80}
+              priority
               className="object-contain drop-shadow-[0_0_15px_rgba(96,165,250,0.5)] hover:scale-110 transition-transform duration-300"
             />
           </button>

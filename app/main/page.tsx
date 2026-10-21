@@ -2,6 +2,7 @@
 'use client'
 
 import Image from 'next/image'
+import { BackgroundVideo } from '@/components/BackgroundVideo'
 import { useEffect, useState, useRef } from 'react'
 
 export default function MainPage() {
@@ -162,16 +163,7 @@ const events = [
     <div className="min-h-screen w-full relative overflow-hidden bg-black">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: 'brightness(0.4)' }}
-        >
-          <source src="/pixel-city.mp4" type="video/mp4" />
-        </video>
+        <BackgroundVideo brightness={0.4} />
         <div className="absolute inset-0 bg-gradient-radial from-transparent via-navy/40 to-navy/90"></div>
         <div className="absolute inset-0 scanline-effect pointer-events-none"></div>
       </div>

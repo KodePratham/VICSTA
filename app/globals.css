@@ -1,5 +1,4 @@
 /* Updated on 2026-01-14 */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@300;400;500;600;700&family=Press+Start+2P&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,7 +17,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-poppins), 'Poppins', sans-serif;
   }
   
   body {
@@ -36,7 +35,7 @@
   }
   
   .mono {
-    font-family: 'Roboto Mono', monospace;
+    font-family: var(--font-roboto-mono), 'Roboto Mono', monospace;
   }
 }
 
@@ -92,7 +91,7 @@
   }
   
   .pixel-text {
-    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-family: var(--font-press-start), 'Press Start 2P', 'Courier New', monospace;
     letter-spacing: 0.05em;
     text-shadow: 
       1px 1px 0px rgba(100, 255, 218, 0.15);
@@ -102,7 +101,7 @@
   }
   
   .pixel-game-text {
-    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-family: var(--font-press-start), 'Press Start 2P', 'Courier New', monospace;
     letter-spacing: 0.05em;
     text-shadow: 
       0 0 8px rgba(100, 255, 218, 0.3),

@@ -36,15 +36,23 @@ export function useScoreEntries() {
 
     const client = supabase
     // Realtime keeps the board live; a slow poll is a fallback if the socket drops.
+    // Debounce bursts of changes into a single refetch.
+    let timer: ReturnType<typeof setTimeout> | null = null
+    const scheduleRefresh = () => {
+      if (timer) clearTimeout(timer)
+      timer = setTimeout(refresh, 300)
+    }
     const channel = client
       .channel('score_entries_changes')
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'score_entries' }, () => {
-        refresh()
-      })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'score_entries' }, scheduleRefresh)
       .subscribe()
-    const interval = setInterval(refresh, 30000)
+    // Fallback poll, skipped while the tab is hidden.
+    const interval = setInterval(() => {
+      if (document.visibilityState === 'visible') refresh()
+    }, 30000)
 
     return () => {
+      if (timer) clearTimeout(timer)
       clearInterval(interval)
       client.removeChannel(channel)
     }
