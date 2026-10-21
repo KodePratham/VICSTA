@@ -204,7 +204,7 @@ export default function LandingPage() {
               <button
                 onClick={() => {
                   playSound()
-                  window.location.href = '/hackarena'
+                  window.location.href = '/orientation'
                 }}
                 className="game-button-blue group relative px-8 sm:px-12 py-4 sm:py-6 text-sm sm:text-base md:text-lg font-bold transition-all duration-300 hover:scale-105"
               >
@@ -216,7 +216,7 @@ export default function LandingPage() {
                 
                 {/* Button text */}
                 <span className="relative pixel-text text-blue-400 group-hover:text-navy transition-colors duration-300 flex items-center gap-3">
-                  🏆 HACKARENA&apos;26
+                  🎮 ORIENTATION
                 </span>
                 
                 {/* Hover background */}
