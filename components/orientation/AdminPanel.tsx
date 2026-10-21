@@ -122,7 +122,7 @@ export function AdminPanel() {
                     : 'text-blue-400 border-blue-400/50 hover:border-blue-400'
                 }`}
               >
-                {g.icon} {g.label}
+                {g.label}
               </button>
             ))}
           </div>

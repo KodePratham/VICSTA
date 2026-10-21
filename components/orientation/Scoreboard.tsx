@@ -1,80 +1,119 @@
 'use client'
 
 import { useMemo } from 'react'
-import { DIVISIONS, GAMES, computeTotals, type ScoreEntry } from '@/lib/orientation'
+import { GAMES, computeTotals, rankDivisions, type ScoreEntry } from '@/lib/orientation'
+
+const RANK_LABELS = ['1ST', '2ND', '3RD']
+
+const BAR_SEGMENTS = {
+  backgroundImage: 'repeating-linear-gradient(90deg, transparent 0 6px, rgba(0, 0, 0, 0.6) 6px 8px)',
+}
+
+function Panel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative border-2 border-blue-400/70 bg-navy/80">
+      <span className="absolute -left-0.5 -top-0.5 h-3 w-3 border-l-2 border-t-2 border-white" />
+      <span className="absolute -right-0.5 -top-0.5 h-3 w-3 border-r-2 border-t-2 border-white" />
+      <span className="absolute -bottom-0.5 -left-0.5 h-3 w-3 border-b-2 border-l-2 border-white" />
+      <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 border-b-2 border-r-2 border-white" />
+      {children}
+    </div>
+  )
+}
 
 export function Scoreboard({ entries }: { entries: ScoreEntry[] }) {
   const totals = useMemo(() => computeTotals(entries), [entries])
 
-  const maxOverall = Math.max(...DIVISIONS.map((d) => totals.overall[d]))
-  const hasLeader = maxOverall > 0
+  const overall = rankDivisions(totals.overall)
+  const top = overall[0].points
+  const hasScores = overall.some((s) => s.points !== 0)
 
   return (
-    <div className="w-full">
-      {/* Overall standings */}
-      <div className="grid grid-cols-3 gap-3 sm:gap-6 mb-8">
-        {DIVISIONS.map((d) => {
-          const isLeader = hasLeader && totals.overall[d] === maxOverall
-          return (
-            <div
-              key={d}
-              className={`relative p-4 sm:p-6 text-center bg-navy/80 border-4 ${
-                isLeader ? 'border-yellow-300 shadow-[0_0_30px_rgba(253,224,71,0.5)]' : 'border-blue-400'
-              }`}
-            >
-              {isLeader && <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-2xl">👑</div>}
-              <p className="pixel-text text-xs sm:text-sm text-blue-400/80 mb-2">DIVISION</p>
-              <p className="pixel-text text-3xl sm:text-5xl text-white mb-3">{d}</p>
-              <p
-                className={`pixel-text text-xl sm:text-3xl ${
-                  isLeader ? 'text-yellow-300' : 'text-blue-400'
-                }`}
-              >
-                {totals.overall[d]}
-              </p>
-              <p className="pixel-text text-[10px] sm:text-xs text-blue-400/60 mt-1">TOTAL PTS</p>
-            </div>
-          )
-        })}
-      </div>
-
-      {/* Per game breakdown */}
-      <div className="space-y-4">
-        {GAMES.map((game) => {
-          const row = totals.perGame[game.id]
-          const best = Math.max(...DIVISIONS.map((d) => row[d]))
-          return (
-            <div key={game.id} className="bg-navy/80 border-4 border-blue-400 p-4 sm:p-6">
-              <h3 className="pixel-text text-sm sm:text-lg text-blue-400 mb-4 flex items-center gap-3">
-                <span className="text-2xl sm:text-3xl">{game.icon}</span>
-                {game.label}
-              </h3>
-              <div className="grid grid-cols-3 gap-3 sm:gap-6">
-                {DIVISIONS.map((d) => {
-                  const isBest = best > 0 && row[d] === best
-                  return (
-                    <div
-                      key={d}
-                      className={`text-center py-3 border-2 ${
-                        isBest ? 'border-yellow-300 bg-yellow-300/10' : 'border-white/30'
+    <div className="space-y-10">
+      <section>
+        <h2 className="pixel-text mb-3 text-xs text-blue-400">OVERALL STANDINGS</h2>
+        <Panel>
+          <ol className="divide-y divide-blue-400/20">
+            {overall.map(({ division, points, rank }) => {
+              const leading = hasScores && rank === 1
+              const width = top > 0 ? (Math.max(0, points) / top) * 100 : 0
+              return (
+                <li key={division} className="px-4 py-4 sm:px-6 sm:py-5">
+                  <div className="flex items-center gap-4">
+                    <span
+                      className={`pixel-text w-10 shrink-0 text-[10px] sm:text-xs ${
+                        leading ? 'text-yellow-300' : 'text-blue-400/60'
                       }`}
                     >
-                      <p className="pixel-text text-[10px] sm:text-xs text-white/70 mb-1">DIV {d}</p>
-                      <p
-                        className={`pixel-text text-lg sm:text-2xl ${
-                          isBest ? 'text-yellow-300' : 'text-white'
-                        }`}
-                      >
-                        {row[d]}
-                      </p>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-          )
-        })}
-      </div>
+                      {hasScores ? RANK_LABELS[rank - 1] : '---'}
+                    </span>
+                    <span className="pixel-text flex-1 text-sm text-white sm:text-base">DIV {division}</span>
+                    <span
+                      className={`pixel-text text-xl sm:text-2xl ${
+                        leading ? 'text-yellow-300' : 'text-white'
+                      }`}
+                    >
+                      {points}
+                    </span>
+                  </div>
+                  <div className="relative mt-3 h-2 bg-white/10">
+                    <div
+                      className={`h-full transition-[width] duration-500 ${
+                        leading ? 'bg-yellow-300' : 'bg-blue-400'
+                      }`}
+                      style={{ width: `${width}%` }}
+                    />
+                    <div className="absolute inset-0" style={BAR_SEGMENTS} />
+                  </div>
+                </li>
+              )
+            })}
+          </ol>
+        </Panel>
+      </section>
+
+      <section>
+        <h2 className="pixel-text mb-3 text-xs text-blue-400">STANDINGS BY GAME</h2>
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-4">
+          {GAMES.map((game) => {
+            const standings = rankDivisions(totals.perGame[game.id])
+            const played = standings.some((s) => s.points !== 0)
+            return (
+              <Panel key={game.id}>
+                <h3 className="border-b-2 border-blue-400/30 px-4 py-3 text-sm font-medium text-white/90">
+                  {game.label}
+                </h3>
+                <ol className="divide-y divide-blue-400/20">
+                  {standings.map(({ division, points, rank }) => {
+                    const leading = played && rank === 1
+                    return (
+                      <li key={division} className="flex items-center gap-3 px-4 py-3">
+                        <span
+                          className={`pixel-text w-8 shrink-0 text-[10px] ${
+                            leading ? 'text-yellow-300' : 'text-blue-400/60'
+                          }`}
+                        >
+                          {played ? RANK_LABELS[rank - 1] : '---'}
+                        </span>
+                        <span className="pixel-text flex-1 text-[10px] text-white/80 sm:text-xs">
+                          DIV {division}
+                        </span>
+                        <span
+                          className={`pixel-text text-xs sm:text-sm ${
+                            leading ? 'text-yellow-300' : 'text-white/60'
+                          }`}
+                        >
+                          {points}
+                        </span>
+                      </li>
+                    )
+                  })}
+                </ol>
+              </Panel>
+            )
+          })}
+        </div>
+      </section>
     </div>
   )
 }

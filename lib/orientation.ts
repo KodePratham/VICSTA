@@ -1,8 +1,7 @@
 export const GAMES = [
-  { id: 'wrong_answers_only', label: 'Wrong Answers Only', icon: '🙃' },
-  { id: 'guess_the_meme', label: 'Guess the Meme', icon: '😂' },
-  { id: 'paper_cup_stacking', label: 'Paper Cup Stacking', icon: '🥤' },
-  { id: 'dance_passing_chain', label: 'Dance Passing Chain', icon: '💃' },
+  { id: 'guess_the_meme', label: 'Guess the Meme' },
+  { id: 'paper_cup_stacking', label: 'Paper Cup Stacking' },
+  { id: 'dance_passing_chain', label: 'Dance Passing Chain' },
 ] as const
 
 export const DIVISIONS = ['A', 'B', 'C'] as const
@@ -22,6 +21,13 @@ export interface ScoreEntry {
 export type Totals = {
   perGame: Record<GameId, Record<Division, number>>
   overall: Record<Division, number>
+}
+
+export type Standing = {
+  division: Division
+  points: number
+  /** 1-based; tied divisions share a rank. */
+  rank: number
 }
 
 export function isGameId(value: unknown): value is GameId {
@@ -46,6 +52,13 @@ export function computeTotals(entries: Pick<ScoreEntry, 'game' | 'division' | 'p
   }
 
   return { perGame, overall }
+}
+
+export function rankDivisions(scores: Record<Division, number>): Standing[] {
+  const sorted = DIVISIONS.map((division) => ({ division, points: scores[division] })).sort(
+    (a, b) => b.points - a.points
+  )
+  return sorted.map((s) => ({ ...s, rank: 1 + sorted.filter((o) => o.points > s.points).length }))
 }
 
 export function gameLabel(id: GameId): string {
